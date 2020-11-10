@@ -1,0 +1,22 @@
+{% load socialaccount %}
+{% providers_media_js %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <h1>Main Page</h1>
+    <a href="/accounts/signup">회원가입</a> 
+    {% if user.is_authenticated %}
+    <a href="/accounts/logout">로그아웃</a>
+    {% csrf_token %}
+    <h1>정상적으로 로그인시 나오는 화면 (대시보드)</h1>
+    {% else %}
+    <a href="{% provider_login_url 'google' %}">Google 로그인</a>
+    {% endif %}
+    
+</body>
+</html>

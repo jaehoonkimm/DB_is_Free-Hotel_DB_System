@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+</head>
+<body>
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <h1>회원가입 화면</h1>
+        <div>
+            <div>
+                <h2>이름 : <input name="username" type="text" required></h2>
+                <h2>비밀번호 : <input name="password1" type="password" required></h2>
+                <h2>비밀번호 확인 : <input name="password2" type="password" required></h2>
+            </div>
+            <br>
+            <button type="submit">회원가입</button>
+        </div>
+    </form>
+</body>
+</html>
