@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django-suit 등록 (suit가 django.contrib.admin보다 상위 라인에 있어야 함)
+    'suit',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
