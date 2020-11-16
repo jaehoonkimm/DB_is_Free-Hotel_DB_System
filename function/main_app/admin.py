@@ -4,10 +4,13 @@ from main_app.models import Customer
 # Register your models here.
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ['customer_id', 'customer_last_name', 'customer_first_name']    
-    list_display_links = ['customer_id']
+    list_display = ['customer_id', 'customer_last_name', 'customer_first_name', 'customer_gender',
+                    'customer_birthdate','customer_nation', 'customer_phone_number', 'customer_group', 
+                    'customer_mileage']
+    # list_display_links = ['customer_id']
     list_filter = ('customer_gender', 'customer_nation', 'customer_group')
-    
+    search_fields = ['customer_first_name', 'customer_phone_number', 'customer_group']
+
 
 admin.site.register(AmenityItemList)
 admin.site.register(AmenitySpendHistory)
