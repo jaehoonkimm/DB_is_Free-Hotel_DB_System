@@ -382,6 +382,15 @@ class RoomHouseKeepingChecklist(models.Model):
         unique_together = (('house_keeping_checklist_id', 'house_keeping_task_id', 'employee_id', 'room_id', 'room_type_id'),)
 
 
+class RoomProductList(models.Model):
+    product_id = models.PositiveIntegerField(db_column='PRODUCT_ID', primary_key=True)  # Field name made lowercase.
+    product_category = models.CharField(db_column='PRODUCT_CATEGORY', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    product_price = models.IntegerField(db_column='PRODUCT_PRICE', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'ROOM_PRODUCT_LIST'
+
 class RoomList(models.Model):
     room_id = models.PositiveIntegerField(db_column='ROOM_ID', primary_key=True)  # Field name made lowercase.
     room_type_id = models.PositiveIntegerField(db_column='ROOM_TYPE_ID')  # Field name made lowercase.
@@ -399,20 +408,9 @@ class RoomList(models.Model):
         db_table = 'ROOM_LIST'
         unique_together = (('room_id', 'room_type_id'),)
 
-
-class RoomProductList(models.Model):
-    product_id = models.PositiveIntegerField(db_column='PRODUCT_ID', primary_key=True)  # Field name made lowercase.
-    product_category = models.CharField(db_column='PRODUCT_CATEGORY', max_length=15, blank=True, null=True)  # Field name made lowercase.
-    product_price = models.IntegerField(db_column='PRODUCT_PRICE', blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'ROOM_PRODUCT_LIST'
-
-
 class RoomTypeInfo(models.Model):
     room_type_id = models.PositiveIntegerField(db_column='ROOM_TYPE_ID', primary_key=True)  # Field name made lowercase.
-    room_grade = models.CharField(db_column='ROOM_GRADE', max_length=1)  # Field name made lowercase.
+    room_grade = models.CharField(db_column='ROOM_GRADE', max_length=20, blank=True)  # Field name made lowercase.
     room_price = models.IntegerField(db_column='ROOM_PRICE', blank=True, null=True)  # Field name made lowercase.
     room_bed_type = models.CharField(db_column='ROOM_BED_TYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
     room_bath_type = models.CharField(db_column='ROOM_BATH_TYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
@@ -420,7 +418,6 @@ class RoomTypeInfo(models.Model):
     class Meta:
         managed = False
         db_table = 'ROOM_TYPE_INFO'
-
 
 class Schedule(models.Model):
     schedule = models.PositiveIntegerField(db_column='SCHEDULE', primary_key=True)  # Field name made lowercase.
