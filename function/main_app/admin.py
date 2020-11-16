@@ -1,6 +1,13 @@
 from django.contrib import admin
 from main_app.models import *
+from main_app.models import Customer
 # Register your models here.
+
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ['customer_id', 'customer_last_name', 'customer_first_name']    
+    list_display_links = ['customer_id']
+    list_filter = ('customer_gender', 'customer_nation', 'customer_group')
+    
 
 admin.site.register(AmenityItemList)
 admin.site.register(AmenitySpendHistory)
@@ -8,7 +15,7 @@ admin.site.register(AmenitySpendHistory)
 admin.site.register(CheckIn)
 admin.site.register(CheckOut)
 
-admin.site.register(Customer)
+admin.site.register(Customer, CustomerAdmin)
 admin.site.register(CustomerParkingSystem)
 admin.site.register(CustomerPreperence)
 admin.site.register(RealtimeClaim)
