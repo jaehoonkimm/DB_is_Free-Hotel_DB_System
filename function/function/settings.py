@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     # django-suit 등록 (suit가 django.contrib.admin보다 상위 라인에 있어야 함)
     'suit',
@@ -93,14 +94,27 @@ WSGI_APPLICATION = 'function.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+#     'default' : {
+#         'ENGINE': 'django.db.backends.mysql',   
+#         'NAME': 'hotelDB',                       
+#         'USER': 'root',                          
+#         'PASSWORD': '1234',                  
+#         'HOST': 'localhost',                     
+#         'PORT': '3306',                          
+#     }
+# }
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.mysql',   
         'NAME': 'hotelDB',                       
-        'USER': 'root',                          
-        'PASSWORD': '1234',                  
-        'HOST': 'localhost',                     
-        'PORT': '3306',                          
+        'USER': 'admin',                          
+        'PASSWORD': 'dbisfree',                  
+        'HOST': 'hotel-db-project.cagfjtvhl9tf.ap-northeast-2.rds.amazonaws.com',                     
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
     }
 }
 
