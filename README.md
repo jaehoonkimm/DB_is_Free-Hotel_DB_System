@@ -36,5 +36,17 @@
     git commit -m 'commit message 쓰는 부분 (따옴표 꼭 써줘야함)'
   ```
   - 위 코드를 통해 commit 가능
-  - 좋은 commit 메시지를 작성하는 방법은 다음 링크 참고 [Git commit 메세지 규약](https://medium.com/hashbox/git-commit-%EB%A9%94%EC%84%B8%EC%A7%80-%EA%B7%9C%EC%B9%99-conventional-commits-71710f7f53c){: target="_blank"}
-  
+  - 좋은 commit 메시지를 작성하는 방법은 다음 링크 참고 [Git commit 메세지 규약](https://medium.com/hashbox/git-commit-%EB%A9%94%EC%84%B8%EC%A7%80-%EA%B7%9C%EC%B9%99-conventional-commits-71710f7f53c/)
+    - Commit을 하면, 이제 현재까지 작업 내역(add 해준 파일들만)을 여러분의 Local PC에 저장된(Clone된) 저장소 안의 Git 파일이 저장하고 있게 됩니다. 즉, 서버에는 아직 안 올라갔습니다.
+    - Commit 후에 Push를 하면 최종적으로 서버(Github 저장소)에 올라갑니다. But, 매번 Commit 할때마다 꼬박꼬박 Push를 할 필요 없습니다. Commit 여러번 쌓인 상태로 Push해도 똑같습니다.
+    - 우리는 매번 Branch에서 작업을 하고 있으므로, 다음과 같이 Push 합니다.
+      ```terminal
+        git push origin issue#3-Add_reservation_page (git push origin Branch이름)
+      ```
+-------------
+- github로 돌아와서, 저장소 메뉴에서 Pull Requests 메뉴로 들어간 후에, New pull request 버튼을 눌러 
+  - base를 main으로 가만히 두고, compare를 여러분이 방금 push한 Branch로 선택하면 됩니다. Create Pull Request를 눌러서 생성하면 끝!
+  - compare의 의미 그대로, Github가 자동으로 여러분의 코드와 base(main Branch)의 코드를 비교합니다. 충돌나는 부분이 없으면 바로 Merge를 눌러서 합칠 수 있습니다.
+    - But, 만약 충돌나는 부분이 있다면, 일정 부분을 수동으로 수정해줘야 될 수도 있습니다. 이 경우 수정 버튼을 눌러서 충돌이 생겼다고 표시되는 부분에
+    - 새로 작성한 코드를 남기고, 지워야 할 코드를 지우면 최종적으로 Merge(main Branch와 issue Branch를 합쳐서 최종적으로 메인 프로젝트에 반영)가 가능합니다.
+      - __Merge하는 것과, 코드를 지우는 것은 반드시 신중하게! 지워도 될지, Merge해도 될지 모르겠다면 꼭 코드 리뷰를 요청해주세요!__
