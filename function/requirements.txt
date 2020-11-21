@@ -53,6 +53,7 @@ distributed==2.5.2
 dj-database-url==0.5.0
 Django==2.1.15
 django-allauth==0.43.0
+django-suit==0.2.28
 docutils==0.15.2
 entrypoints==0.3
 et-xmlfile==1.0.1
@@ -133,6 +134,7 @@ more-itertools==7.2.0
 mpmath==1.1.0
 msgpack==0.6.1
 multipledispatch==0.6.0
+mysqlclient==2.0.1
 navigator-updater==0.2.1
 nbconvert==5.6.0
 nbformat==4.4.0
