@@ -1,7 +1,19 @@
-## DB Project
-
+# DB Project
+## 변경점 (수시로 업데이트)  
+##### DB의 대대적인 구조조정 (20.11.23 PM 23:21 기준)  
+- git pull origin main으로 꼭 로컬에서 pull 받고 작업해주세요!  
+  - 일부 Table 삭제 (프로젝트 핵심이 아닌 것들)  
+  - Foreign Key, Primary Key 조정 및 오류 나는 부분들 수정  
+  - 각 Table별 Primary Key type 전부 Int로 변경 및 Auto Increment 적용  
+  - 필요없는 필드 삭제 및 기타 등등...  
+##### base.html 추가 및 기존 html 파일에 base.html 상속 적용 (20.11.23 PM 21:53 기준)  
+- base.html 파일이 추가되어, 모든 html 페이지에 공통적으로 적용될 내용들(Ex. Nav, Footer, 기타 기초 레이아웃 등)을 한번에 담고 있게 됩니다.
+  - {% block ~~~ %} 이런 형태로 생긴 내용들이 base.html 파일과 다른 html 파일들에 적용이 되어 있습니다.
+  - base.html이 모든 파일에 공통적으로 적용될 title, body의 내용을 담고 있으며, 각각 html 파일들은 기본적으로 base.html 파일의 내용을 상속 받으며, 여기에 더해 각각 html 파일의 block title, block contents 안에 든 내용을 같이 합쳐진다고 생각하시면 됩니다. 
+  - [참고 링크](https://pyrois.tistory.com/7)
+----------
 ### Github Issue 사용법 (꼭 써주세요!)
-##### Issue 발행
+#### Issue 발행
 - Github 저장소 내 Issues 메뉴에서 'New issue' 버튼을 통해 새로운 이슈 발행. 
 
   - Title에 issue의 주제 기입 (Ex. Reservation HTML Page 생성 및 views 연결)
