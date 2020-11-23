@@ -1,13 +1,16 @@
+{% extends "base.html" %} <!-- base.html 파일(템플릿을 구성하는 파일)을 현재 html에 적용시켜주는 부분(아랫줄의 load static도 같이 있어야 됩니당)-->
+{% load static %}
+
 {% load socialaccount %}
 {% providers_media_js %}
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-</head>
-<body>
+
+
+{% block title %}
+    <title>Index Page</title>
+{% endblock title %}
+
+
+{% block contents %}
     <h1>Main Page</h1>
     <a href="/accounts/signup">회원가입</a> 
     {% if user.is_authenticated %}
@@ -17,6 +20,4 @@
     {% else %}
     <a href="{% provider_login_url 'google' %}">Google 로그인</a>
     {% endif %}
-    
-</body>
-</html>
+{% endblock contents %}

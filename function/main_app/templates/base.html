@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    {% endblock title %}
+    <style>
+        body{
+            width : 100%;
+            height: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 지금 보고 있는 base.html 파일의 block contents 태그가 있는 지점에, 각각의 html 파일들의 block contents 태그 안에 있는 내용이 합쳐집니다 -->
+    {% block contents %}
+    {% endblock contents %}
+<!-- 즉, base.html에서 head태그 안에 있는 block title과 block contents 위 아래로 이것저것 요소들을 넣어주면, 그게 전부 각각의 html 파일들에 반영이 됩니다!-->
+<!-- 새로 만든 html 파일에는 당연히 block을 다른 html 파일들처럼 세팅을 해줘야, base.html이 적용이 됩니다. 이미 만들어져있는 html 파일들을 참고하면 이해가 될 것입니다 -->
+
+</body>
+</html>
