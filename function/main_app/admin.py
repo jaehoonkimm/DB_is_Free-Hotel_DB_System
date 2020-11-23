@@ -21,29 +21,26 @@ admin.site.register(CheckOut)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(CustomerParkingSystem)
 admin.site.register(CustomerPreperence)
-admin.site.register(RealtimeClaim)
 
-admin.site.register(DayOff)
+admin.site.register(DepartmentTeam)
 admin.site.register(Employees)
 admin.site.register(EmployeesParkingSystem)
-admin.site.register(EmployeeTeam)
+
 admin.site.register(EmployeeDepartment)
-admin.site.register(EmployeeEtcInfo)
-admin.site.register(Schedule)
+
 
 admin.site.register(HouseKeepingTaskList)
-admin.site.register(RoomHouseKeepingChecklist)
 admin.site.register(LostItemList)
-
-admin.site.register(MeetingroomInfo)
-admin.site.register(ReservationMeetingroom)
-
 admin.site.register(Mileage)
 
-admin.site.register(RoomProductList)
-admin.site.register(OrderHistory)
+admin.site.register(OfficeCheckOn)
+admin.site.register(RealtimeClaim)
 
 admin.site.register(Reservation)
+
 admin.site.register(ReservationCanceled)
 admin.site.register(RoomList)
+
+admin.site.register(RoomOrderHistory)
+admin.site.register(RoomProductList)
 admin.site.register(RoomTypeInfo)
