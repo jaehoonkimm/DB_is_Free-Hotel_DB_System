@@ -13,11 +13,45 @@
 {% block contents %}
     <h1>DB Hotel</h1>
     <a href="/accounts/signup">회원가입</a> 
-    {% if user.is_authenticated %}
-    <a href="/accounts/logout">로그아웃</a>
-    {% csrf_token %}
-    <h1>정상적으로 로그인시 나오는 화면 (대시보드)</h1>
+
+    {% if request.user.is_superuser %}
+    <!-- IF 관리자 계정(superuser로 로그인 검증) 로그인 된 상태일시 실행되는 부분 -->
+        <h2>
+            당신은 관리자 유저입니다. (현재 Super User로 로그인)
+
+            <a href="/accounts/logout">로그아웃</a>
+        </h2>
+
+    
     {% else %}
-    <a href="{% provider_login_url 'google' %}">Google 로그인</a>
+        <!-- IF 관리자 계정 로그인 안 되었으면 실행되는 부분 (ELSE) -->
+        {% if user.is_authenticated %}
+        <!-- IF 일반 유저 계정 로그인 되었으면 실행되는 부분 -->
+        <a href="/accounts/logout">로그아웃</a>
+        {% csrf_token %}
+        <h1>일반 유저로 로그인 중</h1>
+        {% else %}
+        <!-- 일반 유저 계정으로도 로그인 안 되었으면(비로그인 상태) 실행되는 부분 -->
+        <a href="{% provider_login_url 'google' %}">Google 로그인</a>
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <div>
+                <br />
+                <div>
+                    <h3 style="display: inline; ">이름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h3>
+                    <input name="username" type="text" required> <br />
+                    <h3 style="display: inline;">비밀번호 &nbsp;</h3>
+                    <input name="password" type="password" required>
+                </div>
+                <p>TEST 계정 : user / user1234</p>
+                <br />
+                <button type="submit">로그인</button>
+            </div>
+        </form>    
+        {% endif %}
     {% endif %}
+
+
 {% endblock contents %}
