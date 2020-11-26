@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from .models import Calendar
 
 def home(request):
-    return render(request, 'index.html')
+    reserv_day = Calendar.objects.order_by('day')
+    return render(request, 'index.html', {'reserv_day':reserv_day})
 
 #로그인 관련 기능
 def loginhome(request):

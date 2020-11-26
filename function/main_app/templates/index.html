@@ -27,9 +27,24 @@
         <!-- IF 관리자 계정 로그인 안 되었으면 실행되는 부분 (ELSE) -->
         {% if user.is_authenticated %}
         <!-- IF 일반 유저 계정 로그인 되었으면 실행되는 부분 -->
+        {% now "Y-m-d" as todays_date %}
         <a href="/accounts/logout">로그아웃</a>
         {% csrf_token %}
         <h1>일반 유저로 로그인 중</h1>
+
+            <div>
+                <h3>예약 페이지</h3>
+                <div class="row">
+                {% for days in reserv_day %}
+                    <div class="col col-sm-2" style=" height: 200px; border:1px solid cadetblue; background-color: azure; font-size: larger; font-weight: bolder;">
+                    {% if days.day|date %}
+                            <a> {{ days.day|date:"Y-m-d" }} </a>
+                    {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
         {% else %}
         <!-- 일반 유저 계정으로도 로그인 안 되었으면(비로그인 상태) 실행되는 부분 -->
         <a href="{% provider_login_url 'google' %}">Google 로그인</a>
