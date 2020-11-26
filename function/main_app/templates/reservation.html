@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+{% block title %}
+    <title>Reservation Page</title>
+{% endblock title %}
+
+
+{% block contents %}
+
+예약 페이지
+<h3 class="my-3 border-bottom pb-2">예약하기</h3>
+    <form method="post" class="post-form my-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">예약하기</button>
+    </form>
+
+    <script>
+        $(function () {
+            $('.datetime-input').datetimepicker({
+                format:'YYYY-MM-DD'
+            });
+        });
+    </script>
+{% endblock contents %}

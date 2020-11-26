@@ -31,6 +31,7 @@ class AmenitySpendHistory(models.Model):
 
 class Calendar(models.Model):
     day = models.DateField(db_column='DAY', primary_key=True)  # Field name made lowercase.
+    day_name = models.CharField(db_column='DAY_NAME', max_length=10, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -226,8 +227,9 @@ class RealtimeClaim(models.Model):
 
 class Reservation(models.Model):
     reservation_id = models.AutoField(db_column='RESERVATION_ID', primary_key=True)  # Field name made lowercase.
-    customer = models.ForeignKey(Customer, models.DO_NOTHING, db_column='CUSTOMER_ID')  # Field name made lowercase.
+    customer = models.ForeignKey(Customer, models.DO_NOTHING, db_column='CUSTOMER_ID', blank=True, null=True)  # Field name made lowercase.
     room_type_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_TYPE_GRADE_ID')  # Field name made lowercase.
+    reservation_online_name = models.CharField(db_column='RESERVATION_ONLINE_NAME', max_length=30, blank=True, null=True)  # Field name made lowercase.
     reservation_id_identify = models.CharField(db_column='RESERVATION_ID_IDENTIFY', max_length=2, blank=True, null=True)  # Field name made lowercase.
     reservation_prepayment = models.IntegerField(db_column='RESERVATION_PREPAYMENT', blank=True, null=True)  # Field name made lowercase.
     reservation_requests = models.CharField(db_column='RESERVATION_REQUESTS', max_length=100, blank=True, null=True)  # Field name made lowercase.

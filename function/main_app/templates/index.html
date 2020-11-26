@@ -34,9 +34,10 @@
 
             <div>
                 <h3>예약 페이지</h3>
+                <a href="/reservation">예약하러 가기</a>
                 <div class="row">
                 {% for days in reserv_day %}
-                    <div class="col col-sm-2" style=" height: 200px; border:1px solid cadetblue; background-color: azure; font-size: larger; font-weight: bolder;">
+                    <div class="col col-sm-2" style=" height: 200px; border:1px solid cadetblue; background-color: azure; font-size: 30px; font-weight: bolder;">
                     {% if days.day|date %}
                             <a> {{ days.day|date:"Y-m-d" }} </a>
                     {% endif %}

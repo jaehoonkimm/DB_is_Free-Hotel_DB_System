@@ -34,6 +34,7 @@ admin.site.register(LostItemList)
 admin.site.register(Mileage)
 
 admin.site.register(OfficeCheckOn)
+admin.site.register(OfficeCheckOut)
 admin.site.register(RealtimeClaim)
 
 admin.site.register(Reservation)

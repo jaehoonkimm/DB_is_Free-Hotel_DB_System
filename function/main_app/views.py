@@ -3,9 +3,16 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import Calendar
 
+from .forms import ReservationForm
+
 def home(request):
     reserv_day = Calendar.objects.order_by('day')
     return render(request, 'index.html', {'reserv_day':reserv_day})
+
+#예약 관련 기능
+def reservation(request):
+    form = ReservationForm()
+    return render(request, 'reservation.html', {'form':form})
 
 #로그인 관련 기능
 def loginhome(request):
