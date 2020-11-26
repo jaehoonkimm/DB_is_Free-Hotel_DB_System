@@ -26,5 +26,6 @@ urlpatterns = [
     path('logout/', views.logout, name="logout"),
     path('signup/', views.signup, name="signup"),
     path('reservation/', views.reservation, name="reservation"),
+    path('emtaskassign/', views.em_task_assign, name="em_task_assgin"),
     path('accounts/', include('allauth.urls')),
 ]
