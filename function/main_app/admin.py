@@ -37,6 +37,8 @@ admin.site.register(OfficeCheckOn)
 admin.site.register(RealtimeClaim)
 
 admin.site.register(Reservation)
+admin.site.register(ReservationCalendar)
+admin.site.register(Calendar)
 
 admin.site.register(ReservationCanceled)
 admin.site.register(RoomList)

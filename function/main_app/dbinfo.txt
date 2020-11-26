@@ -29,6 +29,14 @@ class AmenitySpendHistory(models.Model):
         db_table = 'AMENITY_SPEND_HISTORY'
 
 
+class Calendar(models.Model):
+    day = models.DateField(db_column='DAY', primary_key=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'CALENDAR'
+
+
 class CheckIn(models.Model):
     check_in_id = models.AutoField(db_column='CHECK_IN_ID', primary_key=True)  # Field name made lowercase.
     reservation = models.ForeignKey('Reservation', models.DO_NOTHING, db_column='RESERVATION_ID')  # Field name made lowercase.
@@ -237,6 +245,17 @@ class Reservation(models.Model):
     class Meta:
         managed = False
         db_table = 'RESERVATION'
+
+
+class ReservationCalendar(models.Model):
+    reservation_calendar_id = models.AutoField(db_column='RESERVATION_CALENDAR_ID', primary_key=True)  # Field name made lowercase.
+    room_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_GRADE_ID', blank=True, null=True)  # Field name made lowercase.
+    day = models.ForeignKey(Calendar, models.DO_NOTHING, db_column='DAY')  # Field name made lowercase.
+    reservation_count = models.IntegerField(db_column='RESERVATION_COUNT')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'RESERVATION_CALENDAR'
 
 
 class ReservationCanceled(models.Model):
