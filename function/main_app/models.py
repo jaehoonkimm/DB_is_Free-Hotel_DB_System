@@ -251,7 +251,7 @@ class ReservationCanceled(models.Model):
 
 
 class RoomList(models.Model):
-    room_id = models.AutoField(db_column='ROOM_ID', primary_key=True)  # Field name made lowercase.
+    room_id = models.IntegerField(db_column='ROOM_ID', primary_key=True)  # Field name made lowercase.
     room_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_GRADE_ID')  # Field name made lowercase.
     room_stay = models.IntegerField(db_column='ROOM_STAY')  # Field name made lowercase.
     room_start_stay = models.DateTimeField(db_column='ROOM_START_STAY', blank=True, null=True)  # Field name made lowercase.
