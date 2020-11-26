@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+{% block title %}
+    <title>Employee Task Assgin Page</title>
+{% endblock title %}
+
+
+{% block contents %}
+
+직원 업무 배정 페이지 
+<h3 class="my-3 border-bottom pb-2">업무 배정</h3>
+    {% csrf_token %}
+    {{ form.as_p }}
+   
+{% endblock contents %}

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Reservation
+from .models import HouseKeepingTaskList
 
 class ReservationForm(forms.ModelForm):
     class Meta:
@@ -11,3 +12,10 @@ class ReservationForm(forms.ModelForm):
         widgets = {
             'reservation_start_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
         }
+
+class EmTaskAssignForm(forms.ModelForm):
+    class Meta:
+        model = HouseKeepingTaskList
+        fields = ['house_keeping_task_id', 'house_keeping_task_start_time', 'house_keeping_task_end_time',
+                'room', 'employee', 'house_keeping_task_creation_timestamp'
+                ]

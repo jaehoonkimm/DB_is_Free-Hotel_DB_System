@@ -4,6 +4,7 @@ from django.contrib import auth
 from .models import Calendar
 
 from .forms import ReservationForm
+from .forms import EmTaskAssignForm
 
 def home(request):
     reserv_day = Calendar.objects.order_by('day')
@@ -46,3 +47,8 @@ def signup(request):
 def logout(request):
     auth.logout(request)
     return redirect('home')
+
+#직원 업무 배정 기능
+def em_task_assign(request):
+    form = EmTaskAssignForm()
+    return render(request, 'em_task_assign.html', {'form':form})
