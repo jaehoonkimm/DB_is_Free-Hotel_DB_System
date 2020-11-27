@@ -27,5 +27,6 @@ urlpatterns = [
     path('signup/', views.signup, name="signup"),
     path('reservation/', views.reservation, name="reservation"),
     path('emtaskassign/', views.em_task_assign, name="em_task_assgin"),
+    path('employeeattendance/', views.employee_attendance, name="employee_attendance"),
     path('accounts/', include('allauth.urls')),
 ]
