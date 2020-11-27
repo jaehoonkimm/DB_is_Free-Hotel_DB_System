@@ -5,6 +5,7 @@ from .models import Calendar
 
 from .forms import ReservationForm
 from .forms import EmTaskAssignForm
+from .forms import EmployeeattendanceForm
 
 def home(request):
     reserv_day = Calendar.objects.order_by('day')
@@ -52,3 +53,8 @@ def logout(request):
 def em_task_assign(request):
     form = EmTaskAssignForm()
     return render(request, 'em_task_assign.html', {'form':form})
+
+#직원 출퇴근 기능
+def employee_attendance(request):
+    form = EmployeeattendanceForm()
+    return render(request, 'employee_attendance.html', {'form':form})
