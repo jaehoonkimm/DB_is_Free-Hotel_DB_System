@@ -28,5 +28,6 @@ urlpatterns = [
     path('reservation/', views.reservation, name="reservation"),
     path('emtaskassign/', views.em_task_assign, name="em_task_assgin"),
     path('employeeattendance/', views.employee_attendance, name="employee_attendance"),
+    path('realtimeclaims/', views.realtime_claims, name="realtime_claims"),
     path('accounts/', include('allauth.urls')),
 ]

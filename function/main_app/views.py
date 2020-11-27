@@ -5,6 +5,7 @@ from .models import Calendar
 
 from .forms import ReservationForm
 from .forms import EmTaskAssignForm
+from .forms import RealTimeClaimsForm
 from .forms import EmployeeattendanceForm
 
 def home(request):
@@ -58,3 +59,8 @@ def em_task_assign(request):
 def employee_attendance(request):
     form = EmployeeattendanceForm()
     return render(request, 'employee_attendance.html', {'form':form})
+
+#실시간 고객 요청 - 직원 업무 할당
+def realtime_claims(request):
+    form = RealTimeClaimsForm()
+    return render(request, 'realtime_claims.html', {'form':form})

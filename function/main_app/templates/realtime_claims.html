@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+{% block title %}
+    <title>Real-Time Claims Page</title>
+{% endblock title %}
+
+
+{% block contents %}
+
+실시간 고객 요청사항 
+<h3 class="my-3 border-bottom pb-2">실시간 업무 배정</h3>
+    {% csrf_token %}
+    {{ form.as_p }}
+   
+{% endblock contents %}
