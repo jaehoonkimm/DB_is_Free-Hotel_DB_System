@@ -7,11 +7,18 @@
 
 {% block title %}
     <title>Index Page</title>
+    <style>
+        body{
+            background-image: url("https://hilton.co.kr/static/upload/hotel_main_20141216152900_lg_pc.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 {% endblock title %}
 
 
 {% block contents %}
-    <h1>Main Page</h1>
+    <h1>DB is free</h1>
     <a href="/accounts/signup">회원가입</a> 
     {% if user.is_authenticated %}
     <a href="/accounts/logout">로그아웃</a>
