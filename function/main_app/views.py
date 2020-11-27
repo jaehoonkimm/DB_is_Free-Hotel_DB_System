@@ -1,9 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from .models import Calendar
+
+from .forms import ReservationForm
+from .forms import EmTaskAssignForm
+from .forms import EmployeeattendanceForm
 
 def home(request):
-    return render(request, 'index.html')
+    reserv_day = Calendar.objects.order_by('day')
+    return render(request, 'index.html', {'reserv_day':reserv_day})
+
+#예약 관련 기능
+def reservation(request):
+    form = ReservationForm()
+    return render(request, 'reservation.html', {'form':form})
 
 #로그인 관련 기능
 def loginhome(request):
@@ -37,3 +48,13 @@ def signup(request):
 def logout(request):
     auth.logout(request)
     return redirect('home')
+
+#직원 업무 배정 기능
+def em_task_assign(request):
+    form = EmTaskAssignForm()
+    return render(request, 'em_task_assign.html', {'form':form})
+
+#직원 출퇴근 기능
+def employee_attendance(request):
+    form = EmployeeattendanceForm()
+    return render(request, 'employee_attendance.html', {'form':form})

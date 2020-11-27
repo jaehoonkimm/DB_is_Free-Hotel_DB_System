@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block title %}
+    <title>Employee Attendance Page</title>
+{% endblock title %}
+
+{% block contents %}
+
+직원 출근 페이지
+<h3 class="my-3 border-bottom pb-2">출근 확인</h3>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+<h3 class="my-3 border-bottom pb-2">퇴근 확인</h3>
+    {% csrf_token %}
+    {{ form.as_p }}   
+{% endblock contents %}

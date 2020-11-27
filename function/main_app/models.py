@@ -29,6 +29,15 @@ class AmenitySpendHistory(models.Model):
         db_table = 'AMENITY_SPEND_HISTORY'
 
 
+class Calendar(models.Model):
+    day = models.DateField(db_column='DAY', primary_key=True)  # Field name made lowercase.
+    day_name = models.CharField(db_column='DAY_NAME', max_length=10, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'CALENDAR'
+
+
 class CheckIn(models.Model):
     check_in_id = models.AutoField(db_column='CHECK_IN_ID', primary_key=True)  # Field name made lowercase.
     reservation = models.ForeignKey('Reservation', models.DO_NOTHING, db_column='RESERVATION_ID')  # Field name made lowercase.
@@ -205,6 +214,7 @@ class OfficeCheckOut(models.Model):
 class RealtimeClaim(models.Model):
     realtime_claim_id = models.AutoField(db_column='REALTIME_CLAIM_ID', primary_key=True)  # Field name made lowercase.
     check_in = models.ForeignKey(CheckIn, models.DO_NOTHING, db_column='CHECK_IN_ID')  # Field name made lowercase.
+    employee = models.ForeignKey(Employees, models.DO_NOTHING, db_column='EMPLOYEE_ID', blank=True, null=True)  # Field name made lowercase.
     realtime_clain_content = models.CharField(db_column='REALTIME_CLAIN_CONTENT', max_length=300, blank=True, null=True)  # Field name made lowercase.
     claim_creation_time = models.DateTimeField(db_column='CLAIM_CREATION_TIME')  # Field name made lowercase.
     claim_task_start_time = models.DateTimeField(db_column='CLAIM_TASK_START_TIME', blank=True, null=True)  # Field name made lowercase.
@@ -218,8 +228,9 @@ class RealtimeClaim(models.Model):
 
 class Reservation(models.Model):
     reservation_id = models.AutoField(db_column='RESERVATION_ID', primary_key=True)  # Field name made lowercase.
-    customer = models.ForeignKey(Customer, models.DO_NOTHING, db_column='CUSTOMER_ID')  # Field name made lowercase.
+    customer = models.ForeignKey(Customer, models.DO_NOTHING, db_column='CUSTOMER_ID', blank=True, null=True)  # Field name made lowercase.
     room_type_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_TYPE_GRADE_ID')  # Field name made lowercase.
+    reservation_online_name = models.CharField(db_column='RESERVATION_ONLINE_NAME', max_length=30, blank=True, null=True)  # Field name made lowercase.
     reservation_id_identify = models.CharField(db_column='RESERVATION_ID_IDENTIFY', max_length=2, blank=True, null=True)  # Field name made lowercase.
     reservation_prepayment = models.IntegerField(db_column='RESERVATION_PREPAYMENT', blank=True, null=True)  # Field name made lowercase.
     reservation_requests = models.CharField(db_column='RESERVATION_REQUESTS', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -239,6 +250,17 @@ class Reservation(models.Model):
         db_table = 'RESERVATION'
 
 
+class ReservationCalendar(models.Model):
+    reservation_calendar_id = models.AutoField(db_column='RESERVATION_CALENDAR_ID', primary_key=True)  # Field name made lowercase.
+    room_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_GRADE_ID', blank=True, null=True)  # Field name made lowercase.
+    day = models.ForeignKey(Calendar, models.DO_NOTHING, db_column='DAY')  # Field name made lowercase.
+    reservation_count = models.IntegerField(db_column='RESERVATION_COUNT')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'RESERVATION_CALENDAR'
+
+
 class ReservationCanceled(models.Model):
     reservation_canceled_id = models.AutoField(db_column='RESERVATION_CANCELED_ID', primary_key=True)  # Field name made lowercase.
     reservation = models.ForeignKey(Reservation, models.DO_NOTHING, db_column='RESERVATION_ID')  # Field name made lowercase.
@@ -251,7 +273,7 @@ class ReservationCanceled(models.Model):
 
 
 class RoomList(models.Model):
-    room_id = models.AutoField(db_column='ROOM_ID', primary_key=True)  # Field name made lowercase.
+    room_id = models.IntegerField(db_column='ROOM_ID', primary_key=True)  # Field name made lowercase.
     room_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_GRADE_ID')  # Field name made lowercase.
     room_stay = models.IntegerField(db_column='ROOM_STAY')  # Field name made lowercase.
     room_start_stay = models.DateTimeField(db_column='ROOM_START_STAY', blank=True, null=True)  # Field name made lowercase.
