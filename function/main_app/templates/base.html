@@ -17,25 +17,23 @@
             background-color: transparent;
             font-size: larger;
         }
-
-        
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/" >DB HOTEL</a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/" style="font-family: 맑은 고딕; font-weight: bold; font-size: larger;">DB HOTEL</a>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
-            <ul class="navbar-nav navbar-right">
-                <li class="nav-item "><a class="nav-link" href="/reservation/">예약하기</a></li>
-                <li class="nav-item "><a class="nav-link" href="/accounts/login/">로그인</a></li>
-                <li class="nav-item "><a class="nav-link" href="/accounts/signup/">회원가입</a></li>
+            <ul class="navbar-nav">
+                <li class="nav-item "><a class="nav-link" href="/reservation/" style="font-family: 맑은 고딕; font-weight: bold; font-size: small;">예약하기</a></li>
+                <li class="nav-item "><a class="nav-link" href="/accounts/login/" style="font-family: 맑은 고딕; font-size: small;">로그인</a></li>
+                <li class="nav-item "><a class="nav-link" href="/accounts/signup/" style="font-family: 맑은 고딕; font-size: small;">회원가입</a></li>
             </ul>
         </div>
-    </nav>
+      </nav>
 
 <!-- 지금 보고 있는 base.html 파일의 block contents 태그가 있는 지점에, 각각의 html 파일들의 block contents 태그 안에 있는 내용이 합쳐집니다 -->
     {% block contents %}
