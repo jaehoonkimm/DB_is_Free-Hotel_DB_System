@@ -227,6 +227,10 @@ class RealtimeClaim(models.Model):
 
 
 class Reservation(models.Model):
+    BREAKFAST_CHOICES = {
+        ('0','미포함'),
+        ('1','포함')
+    }
     reservation_id = models.AutoField(db_column='RESERVATION_ID', primary_key=True)  # Field name made lowercase.
     customer = models.ForeignKey(Customer, models.DO_NOTHING, db_column='CUSTOMER_ID', blank=True, null=True)  # Field name made lowercase.
     room_type_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_TYPE_GRADE_ID')  # Field name made lowercase.
@@ -241,7 +245,8 @@ class Reservation(models.Model):
     reservation_regist_timestamp = models.DateTimeField(db_column='RESERVATION_REGIST_TIMESTAMP')  # Field name made lowercase.
     reservation_start_date = models.DateField(db_column='RESERVATION_START_DATE')  # Field name made lowercase.
     reservation_end_date = models.DateField(db_column='RESERVATION_END_DATE')  # Field name made lowercase.
-    reservation_breakfast_included = models.IntegerField(db_column='RESERVATION_BREAKFAST_INCLUDED', blank=True, null=True)  # Field name made lowercase.
+    reservation_breakfast_included = models.IntegerField(db_column='RESERVATION_BREAKFAST_INCLUDED', blank=True, null=True,
+                                                        choices=BREAKFAST_CHOICES)  # Field name made lowercase.
     reservation_check_in_time = models.TimeField(db_column='RESERVATION_CHECK_IN_TIME', blank=True, null=True)  # Field name made lowercase.
     reservation_check_out_time = models.TimeField(db_column='RESERVATION_CHECK_OUT_TIME', blank=True, null=True)  # Field name made lowercase.
 
