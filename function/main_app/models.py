@@ -125,7 +125,8 @@ class Employees(models.Model):
     employee_s_s_num = models.CharField(db_column='EMPLOYEE_S_S_NUM', max_length=13, blank=True, null=True)  # Field name made lowercase.
     employee_phone_number = models.CharField(db_column='EMPLOYEE_PHONE_NUMBER', max_length=11, blank=True, null=True)  # Field name made lowercase.
     employee_ability_language = models.CharField(db_column='EMPLOYEE_ABILITY_LANGUAGE', max_length=50, blank=True, null=True)  # Field name made lowercase.
-
+    account_id = models.CharField(db_column='ACCOUNT_ID', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    
     class Meta:
         managed = False
         db_table = 'EMPLOYEES'
