@@ -8,13 +8,24 @@ from .forms import EmTaskAssignForm
 from .forms import RealTimeClaimsForm
 from .forms import EmployeeattendanceForm
 
+from django.utils import timezone
+now = timezone.localtime()
+
 def home(request):
     reserv_day = Calendar.objects.order_by('day')
     return render(request, 'index.html', {'reserv_day':reserv_day})
 
 #예약 관련 기능
 def reservation(request):
-    form = ReservationForm()
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.reservation_regist_timestamp = timezone.now()
+            reservation.save()
+            return redirect('home')
+    else:
+        form = ReservationForm()
     return render(request, 'reservation.html', {'form':form})
 
 #로그인 관련 기능
