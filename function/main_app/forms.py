@@ -12,7 +12,8 @@ class ReservationForm(forms.ModelForm):
                 'reservation_child_count', 'reservation_group',
                 'reservation_start_date', 'reservation_end_date',
                 'reservation_breakfast_included']
-        labels = { 'reservation_online_name':'예약자 성함',
+        labels = {  'room_type_grade':'예약 객실 등급',
+                    'reservation_online_name':'예약자 성함',
                     'reservation_adult_count':'숙박자 수',
                     'reservation_child_count':'동반 아동 수',
                     'reservation_group':'소속 단체',
