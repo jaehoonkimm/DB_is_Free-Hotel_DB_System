@@ -232,9 +232,14 @@ class Reservation(models.Model):
         (0,'미포함'),
         (1,'포함')
     )
+    ROOM_TYPE_CHOICES = (
+        ('Standard Single','스탠다드 싱글'),
+        ('Suite Double', '스위트 더블'),
+    )
     reservation_id = models.AutoField(db_column='RESERVATION_ID', primary_key=True)  # Field name made lowercase.
     customer = models.ForeignKey(Customer, models.DO_NOTHING, db_column='CUSTOMER_ID', blank=True, null=True)  # Field name made lowercase.
-    room_type_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_TYPE_GRADE_ID')  # Field name made lowercase.
+    room_type_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, choices=ROOM_TYPE_CHOICES ,
+                                        db_column='ROOM_TYPE_GRADE_ID')  # Field name made lowercase.
     reservation_online_name = models.CharField(db_column='RESERVATION_ONLINE_NAME', max_length=30, blank=True, null=True)  # Field name made lowercase.
     reservation_id_identify = models.CharField(db_column='RESERVATION_ID_IDENTIFY', max_length=2, blank=True, null=True)  # Field name made lowercase.
     reservation_prepayment = models.IntegerField(db_column='RESERVATION_PREPAYMENT', blank=True, null=True)  # Field name made lowercase.
@@ -280,7 +285,7 @@ class ReservationCanceled(models.Model):
 
 class RoomList(models.Model):
     room_id = models.IntegerField(db_column='ROOM_ID', primary_key=True)  # Field name made lowercase.
-    room_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_GRADE_ID')  # Field name made lowercase.
+    room_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_GRADE_ID', related_name='grades')  # Field name made lowercase.
     room_stay = models.IntegerField(db_column='ROOM_STAY')  # Field name made lowercase.
     room_start_stay = models.DateTimeField(db_column='ROOM_START_STAY', blank=True, null=True)  # Field name made lowercase.
     room_end_stay = models.DateTimeField(db_column='ROOM_END_STAY', blank=True, null=True)  # Field name made lowercase.
