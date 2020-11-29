@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     #provider 명시
     'allauth.socialaccount.providers.google',
 
+    #rangefilter (admin 페이지에서 특정 기간 검색(filter)시에 날짜 구간을 선택할 수 있도록 하기 위함)
+    'rangefilter'
+
 ]
 
 MIDDLEWARE = [

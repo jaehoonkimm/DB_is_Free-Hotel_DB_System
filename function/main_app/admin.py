@@ -3,6 +3,8 @@ from main_app.models import *
 from main_app.models import Customer
 # Register your models here.
 
+from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
+
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['customer_id', 'customer_last_name', 'customer_first_name', 'customer_gender',
                     'customer_birthdate','customer_nation', 'customer_phone_number', 'customer_group', 
@@ -11,6 +13,15 @@ class CustomerAdmin(admin.ModelAdmin):
     list_filter = ('customer_gender', 'customer_nation', 'customer_group')
     search_fields = ['customer_first_name', 'customer_phone_number', 'customer_group']
 
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ['reservation_id', 'customer', 'room_type_grade', 'reservation_online_name', 'reservation_prepayment', 'reservation_requests',
+                    'reservation_card_number', 'reservation_adult_count', 'reservation_child_count', 'reservation_group', 'reservation_regist_timestamp',
+                    'reservation_start_date', 'reservation_end_date', 'reservation_breakfast_included', 'reservation_check_in_time', 'reservation_check_out_time']
+    list_filter = ('room_type_grade', 'reservation_group', 
+                ('reservation_regist_timestamp', DateRangeFilter),
+                ('reservation_start_date', DateRangeFilter),
+                ('reservation_end_date', DateRangeFilter),)
+    search_fields = []
 
 admin.site.register(AmenityItemList)
 admin.site.register(AmenitySpendHistory)
@@ -37,7 +48,7 @@ admin.site.register(OfficeCheckOn)
 admin.site.register(OfficeCheckOut)
 admin.site.register(RealtimeClaim)
 
-admin.site.register(Reservation)
+admin.site.register(Reservation, ReservationAdmin)
 admin.site.register(ReservationCalendar)
 admin.site.register(Calendar)
 

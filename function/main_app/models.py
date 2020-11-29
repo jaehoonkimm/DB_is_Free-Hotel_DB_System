@@ -68,6 +68,7 @@ class Customer(models.Model):
     customer_last_name = models.CharField(db_column='CUSTOMER_LAST_NAME', max_length=30, blank=True, null=True)  # Field name made lowercase.
     customer_first_name = models.CharField(db_column='CUSTOMER_FIRST_NAME', max_length=30)  # Field name made lowercase.
     customer_nation = models.CharField(db_column='CUSTOMER_NATION', max_length=30, blank=True, null=True)  # Field name made lowercase.
+    customer_nation.verbose_name = "국가"
     customer_gender = models.CharField(db_column='CUSTOMER_GENDER', max_length=15, blank=True, null=True)  # Field name made lowercase.
     customer_birthdate = models.DateField(db_column='CUSTOMER_BIRTHDATE', blank=True, null=True)  # Field name made lowercase.
     customer_phone_number = models.CharField(db_column='CUSTOMER_PHONE_NUMBER', max_length=30, blank=True, null=True)  # Field name made lowercase.
