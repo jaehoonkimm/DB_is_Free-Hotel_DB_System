@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import Calendar
+from .models import *
 
 from .forms import ReservationForm
 from .forms import EmTaskAssignForm
@@ -13,7 +13,8 @@ now = timezone.localtime()
 
 def home(request):
     reserv_day = Calendar.objects.order_by('day')
-    return render(request, 'index.html', {'reserv_day':reserv_day})
+    room_list = RoomList.objects.filter(room_grade='Suite Double').count
+    return render(request, 'index.html', {'reserv_day':reserv_day, 'room_list':room_list})
 
 #예약 관련 기능
 def reservation(request):
