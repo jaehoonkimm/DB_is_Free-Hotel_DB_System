@@ -228,10 +228,10 @@ class RealtimeClaim(models.Model):
 
 
 class Reservation(models.Model):
-    BREAKFAST_CHOICES = {
-        ('0','미포함'),
-        ('1','포함')
-    }
+    BREAKFAST_CHOICES = (
+        (0,'미포함'),
+        (1,'포함')
+    )
     reservation_id = models.AutoField(db_column='RESERVATION_ID', primary_key=True)  # Field name made lowercase.
     customer = models.ForeignKey(Customer, models.DO_NOTHING, db_column='CUSTOMER_ID', blank=True, null=True)  # Field name made lowercase.
     room_type_grade = models.ForeignKey('RoomTypeInfo', models.DO_NOTHING, db_column='ROOM_TYPE_GRADE_ID')  # Field name made lowercase.
