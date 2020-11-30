@@ -10,6 +10,7 @@ from .forms import EmployeeattendanceForm
 
 from django.utils import timezone
 now = timezone.localtime()
+import re
 
 def home(request):
     reserv_day = Calendar.objects.order_by('day')
@@ -37,12 +38,35 @@ def delete_reservation_calendar(request):
 
 #예약 관련 기능
 def reservation(request):
+    reserv_calendar_date = ReservationCalendar.objects.all()
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.reservation_regist_timestamp = timezone.now()
-            reservation.save()
+            
+
+            start_checker = 0
+            for date in reserv_calendar_date:
+                day_in_calendar = re.findall('\(([^)]+)', str(date.day))
+                if(str(day_in_calendar[0]) == str(reservation.reservation_start_date) and date.room_grade == reservation.room_type_grade):
+                    start_checker = 1
+                    temp = date.reservation_count
+                    date.reservation_count = temp-1
+                    
+                elif(start_checker == 1 and str(day_in_calendar[0]) != str(reservation.reservation_end_date)):
+                    temp = date.reservation_count
+                    date.reservation_count = temp-1
+
+                elif(start_checker == 1 and str(day_in_calendar[0]) == str(reservation.reservation_end_date)):
+                    temp = date.reservation_count
+                    date.reservation_count = temp-1
+                    break
+                else:
+                    pass
+                
+                date.save()
+                reservation.save()
             return redirect('home')
     else:
         form = ReservationForm()
