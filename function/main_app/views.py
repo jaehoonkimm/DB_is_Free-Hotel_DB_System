@@ -52,19 +52,25 @@ def reservation(request):
                 if(str(day_in_calendar[0]) == str(reservation.reservation_start_date) and date.room_grade == reservation.room_type_grade):
                     start_checker = 1
                     temp = date.reservation_count
+                    if (temp < 1):
+                        return redirect('home')
                     date.reservation_count = temp-1
                     
                 elif(start_checker == 1 and str(day_in_calendar[0]) != str(reservation.reservation_end_date)):
                     temp = date.reservation_count
+                    if (temp < 1):
+                        return redirect('home')
                     date.reservation_count = temp-1
 
                 elif(start_checker == 1 and str(day_in_calendar[0]) == str(reservation.reservation_end_date)):
                     temp = date.reservation_count
+                    if (temp < 1):
+                        return redirect('home')
                     date.reservation_count = temp-1
+                    date.save()
                     break
                 else:
                     pass
-                
                 date.save()
                 reservation.save()
             return redirect('home')
