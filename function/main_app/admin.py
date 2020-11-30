@@ -23,6 +23,13 @@ class ReservationAdmin(admin.ModelAdmin):
                 ('reservation_end_date', DateRangeFilter),)
     search_fields = []
 
+class ReservationCalendarAdmin(admin.ModelAdmin):
+    list_display = ['reservation_calendar_id', 'day','room_grade', 'reservation_count']
+    list_filter = (('day', DateRangeFilter), 
+                    'room_grade',
+                    'reservation_count')
+    search_fields = []
+
 admin.site.register(AmenityItemList)
 admin.site.register(AmenitySpendHistory)
 
@@ -49,7 +56,7 @@ admin.site.register(OfficeCheckOut)
 admin.site.register(RealtimeClaim)
 
 admin.site.register(Reservation, ReservationAdmin)
-admin.site.register(ReservationCalendar)
+admin.site.register(ReservationCalendar, ReservationCalendarAdmin)
 admin.site.register(Calendar)
 
 admin.site.register(ReservationCanceled)

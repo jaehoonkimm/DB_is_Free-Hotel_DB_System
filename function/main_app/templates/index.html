@@ -28,7 +28,9 @@
 
             <a href="/accounts/logout">로그아웃</a>
         </h2>
-
+            <a href="/create_reservation_calendar">예약석 초기화</a>
+            <a href="/delete_reservation_calendar">예약석 삭제</a>
+            
         <a href="/admin">관리자 페이지</a>
 
     
@@ -45,15 +47,23 @@
                 <h3>예약 페이지</h3>
                 <a href="/reservation">예약하러 가기</a>
                 <div class="row">
+                <!-- 캘린더형 div 구현 + 날짜 보여주는 텍스트 부분 -->
                 {% for days in reserv_day %}
                     <div class="col col-sm-2" style=" height: 200px; border:1px solid cadetblue; background-color: azure; font-size: 30px; font-weight: bolder;">
                     {% if days.day|date %}
                         <a> {{ days.day|date:"Y-m-d" }} </a> <br />
-
-                        <p> {{ room_list }} </p>
-
                     {% endif %}
-                    
+
+                        <!-- Grade별 남은 예약 가능한 자리를 보여주는 텍스트 부분 -->
+                        <div style="font-size: large;">
+                            {% for date in room_list %}
+                            {% if days.day == date.day_id %}
+                                {{ date.room_grade_id }} : 
+                                {{ date.reservation_count }} <br />
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+
                     </div>
                 {% endfor %}
                 </div>
