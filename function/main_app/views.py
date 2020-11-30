@@ -16,6 +16,24 @@ def home(request):
     room_list = RoomList.objects.filter(room_grade='Suite Double').count
     return render(request, 'index.html', {'reserv_day':reserv_day, 'room_list':room_list})
 
+def create_reservation_calendar(request):
+    all_date = Calendar.objects.all()
+    all_room_type = []
+    for room_type in RoomTypeInfo.objects.all():
+        all_room_type.append(room_type)
+    
+    for roomType in all_room_type:
+        for i in range(len(all_date)):
+            day_val = all_date[i]
+            ReservationCalendar.objects.create(room_grade = roomType,
+                                                reservation_count = RoomList.objects.all().filter(room_grade=roomType).count(),
+                                                day = day_val)
+    return redirect('home')
+def delete_reservation_calendar(request):
+    querySet = ReservationCalendar.objects.all()
+    querySet.delete()
+    return redirect('home')
+
 #예약 관련 기능
 def reservation(request):
     if request.method == 'POST':
