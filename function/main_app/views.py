@@ -13,7 +13,8 @@ now = timezone.localtime()
 
 def home(request):
     reserv_day = Calendar.objects.order_by('day')
-    room_list = RoomList.objects.filter(room_grade='Suite Double').count
+    # room_list = RoomList.objects.filter(room_grade='Suite Double').count
+    room_list = ReservationCalendar.objects.all().values()
     return render(request, 'index.html', {'reserv_day':reserv_day, 'room_list':room_list})
 
 def create_reservation_calendar(request):

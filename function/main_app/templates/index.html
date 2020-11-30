@@ -51,10 +51,17 @@
                     <div class="col col-sm-2" style=" height: 200px; border:1px solid cadetblue; background-color: azure; font-size: 30px; font-weight: bolder;">
                     {% if days.day|date %}
                         <a> {{ days.day|date:"Y-m-d" }} </a> <br />
-
-                        <p> {{ room_list }} </p>
-
                     {% endif %}
+                    
+                    <div style="font-size: large;">
+                        {% for date in room_list %}
+                        {% if days.day == date.day_id %}
+                            {{ date.room_grade_id }} : 
+                            {{ date.reservation_count }} <br />
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+
                     
                     </div>
                 {% endfor %}
