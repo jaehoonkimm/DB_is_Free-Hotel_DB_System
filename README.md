@@ -1,5 +1,7 @@
 # DB Project
 ## 변경점 및 참고사항(수시로 업데이트)  
+#### django-admin-rangefilter 추가  
+- pip install django-admin-rangefilter
 #### <html에서 관리자계정/일반계정 로그인 여부에 따라 서로 다른 내용 띄우기> (20.11.26 AM 03:13 )
 - Django의 템플릿 언어 사용
   - 예시 : {% 문법 %}  
