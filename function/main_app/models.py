@@ -160,7 +160,7 @@ class HouseKeepingTaskList(models.Model):
     house_keeping_task_id = models.AutoField(db_column='HOUSE_KEEPING_TASK_ID', primary_key=True)  # Field name made lowercase.
     room = models.ForeignKey('RoomList', models.DO_NOTHING, db_column='ROOM_ID')  # Field name made lowercase.
     employee = models.ForeignKey(Employees, models.DO_NOTHING, db_column='EMPLOYEE_ID', blank=True, null=True)  # Field name made lowercase.
-    house_keeping_task_creation_timestamp = models.DateTimeField(db_column='HOUSE_KEEPING_TASK_CREATION_TIMESTAMP')  # Field name made lowercase.
+    #house_keeping_task_creation_timestamp = models.DateTimeField(db_column='HOUSE_KEEPING_TASK_CREATION_TIMESTAMP')  # Field name made lowercase.
     house_keeping_task_start_time = models.TimeField(db_column='HOUSE_KEEPING_TASK_START_TIME', blank=True, null=True)  # Field name made lowercase.
     house_keeping_task_end_time = models.TimeField(db_column='HOUSE_KEEPING_TASK_END_TIME', blank=True, null=True)  # Field name made lowercase.
 
