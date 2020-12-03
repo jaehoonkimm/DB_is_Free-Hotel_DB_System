@@ -54,9 +54,18 @@ class EmployeeattendanceForm(forms.ModelForm):
 class RealTimeClaimsForm(forms.ModelForm):
     class Meta:
         model = RealtimeClaim
-        fields = ['realtime_clain_content', 'claim_note','check_in', 'employee',
-                'claim_creation_time'
+        fields = ['realtime_clain_content', 'claim_note', 'check_in', 
+                'employee'
                 ]
+        widgets = {
+            'claim_note': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        }
+        labels = {
+            'realtime_clain_content': '요청 업무',
+            'claim_note': '자세한 요청사항 기입',
+            'check_in' : '체크인 번호',
+            'employee': '직원',
+        }
         claim_creation_time = forms.DateTimeField(help_text="실시간 고객 요청 받은 시간")
         renewal_date = forms.DateField(help_text="Enter.")
     

@@ -218,7 +218,7 @@ class RealtimeClaim(models.Model):
     check_in = models.ForeignKey(CheckIn, models.DO_NOTHING, db_column='CHECK_IN_ID')  # Field name made lowercase.
     employee = models.ForeignKey(Employees, models.DO_NOTHING, db_column='EMPLOYEE_ID', blank=True, null=True)  # Field name made lowercase.
     realtime_clain_content = models.CharField(db_column='REALTIME_CLAIN_CONTENT', max_length=300, blank=True, null=True)  # Field name made lowercase.
-    claim_creation_time = models.DateTimeField(db_column='CLAIM_CREATION_TIME')  # Field name made lowercase.
+    #claim_creation_time = models.DateTimeField(db_column='CLAIM_CREATION_TIME')  # Field name made lowercase.
     claim_task_start_time = models.DateTimeField(db_column='CLAIM_TASK_START_TIME', blank=True, null=True)  # Field name made lowercase.
     claim_task_end_time = models.DateTimeField(db_column='CLAIM_TASK_END_TIME', blank=True, null=True)  # Field name made lowercase.
     claim_note = models.CharField(db_column='CLAIM_NOTE', max_length=300, blank=True, null=True)  # Field name made lowercase.
