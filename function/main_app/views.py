@@ -113,8 +113,17 @@ def logout(request):
 
 #직원 업무 배정 기능
 def em_task_assign(request):
-    form = EmTaskAssignForm()
-    return render(request, 'em_task_assign.html', {'form':form})
+    if request.method == "POST":
+        form = EmTaskAssignForm(request.POST)
+        if form.is_valid():
+            houseKeepingTaskList = form.save(commit=False)
+            #house_keeping_task_creation_timestamp = timezone.now()
+            houseKeepingTaskList.save()
+            return redirect('home')
+    else:
+        form = EmTaskAssignForm()
+    context = {"form": form}
+    return render(request, 'em_task_assign.html', context)
 
 #직원 출퇴근 기능
 def employee_attendance(request):
@@ -124,4 +133,4 @@ def employee_attendance(request):
 #실시간 고객 요청 - 직원 업무 할당
 def realtime_claims(request):
     form = RealTimeClaimsForm()
-    return render(request, 'realtime_claims.html', {'form':form})
+    return render(request, 'realtime_claims.html', form)
