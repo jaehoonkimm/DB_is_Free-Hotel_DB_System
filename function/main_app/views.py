@@ -111,7 +111,7 @@ def logout(request):
     auth.logout(request)
     return redirect('home')
 
-#직원 업무 배정 기능
+#하우스 키핑 - 직원 업무 배정 기능
 def em_task_assign(request):
     if request.method == "POST":
         form = EmTaskAssignForm(request.POST)
@@ -132,5 +132,14 @@ def employee_attendance(request):
 
 #실시간 고객 요청 - 직원 업무 할당
 def realtime_claims(request):
-    form = RealTimeClaimsForm()
-    return render(request, 'realtime_claims.html', form)
+    if request.method == "POST":
+        form = RealTimeClaimsForm(request.POST)
+        if form.is_valid():
+            RealtimeClaim = form.save(commit=False)
+            #claim_creation_time = timezone.now()
+            RealtimeClaim.save()
+            return redirect('home')
+    else:
+        form = RealTimeClaimsForm()
+    context = {"form": form}
+    return render(request, 'realtime_claims.html', context)
