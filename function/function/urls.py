@@ -30,4 +30,6 @@ urlpatterns = [
     path('employeeattendance/', views.employee_attendance, name="employee_attendance"),
     path('realtimeclaims/', views.realtime_claims, name="realtime_claims"),
     path('accounts/', include('allauth.urls')),
+    path('create_reservation_calendar/', views.create_reservation_calendar, name='create_reservation_calendar'),
+    path('delete_reservation_calendar/', views.delete_reservation_calendar, name='delete_reservation_calendar'),
 ]

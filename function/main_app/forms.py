@@ -29,9 +29,21 @@ class ReservationForm(forms.ModelForm):
 class EmTaskAssignForm(forms.ModelForm):
     class Meta:
         model = HouseKeepingTaskList
-        fields = ['house_keeping_task_id', 'house_keeping_task_start_time', 'house_keeping_task_end_time',
-                'room', 'employee', 'house_keeping_task_creation_timestamp'
+        fields = [ #'house_keeping_task_start_time', 'house_keeping_task_end_time',
+                'room', 'employee', 'extra_note'
                 ]
+        labels = {
+            #'house_keeping_task_start_time': '업무 시작시간',
+            #'house_keeping_task_end_time': '업무 마감시간',
+            'room': '객실 번호',
+            'employee': '직원',
+            'extra_note' : '추가 기록사항'
+        }
+        widgets = {
+            'extra_note': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
+        
+        
 
 class EmployeeattendanceForm(forms.ModelForm):
     class Meta:
@@ -46,6 +58,18 @@ class EmployeeattendanceForm(forms.ModelForm):
 class RealTimeClaimsForm(forms.ModelForm):
     class Meta:
         model = RealtimeClaim
-        fields = [ 'claim_creation_time', 'realtime_clain_content', 'claim_note',
-                'check_in', 'employee'
+        fields = ['realtime_clain_content', 'claim_note', 'check_in', 
+                'employee'
                 ]
+        widgets = {
+            'claim_note': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        }
+        labels = {
+            'realtime_clain_content': '요청 업무',
+            'claim_note': '자세한 요청사항 기입',
+            'check_in' : '체크인 번호',
+            'employee': '직원'
+        }
+        #'claim_task_end_time' = forms.DateTimeField(help_text="실시간 고객 요청 받은 시간")
+        #renewal_date = forms.DateField(help_text="Enter.")
+    
