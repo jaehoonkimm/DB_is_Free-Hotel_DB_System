@@ -41,15 +41,13 @@
 
     {% if request.user.is_superuser %}
     <!-- IF 관리자 계정(superuser로 로그인 검증) 로그인 된 상태일시 실행되는 부분 -->
-        <h2>
-            당신은 관리자 유저입니다. (현재 Super User로 로그인)
+        <p>관리자 유저로 로그인 되었습니다. &nbsp;<a href="/accounts/logout">로그아웃</a></p>
 
-            <a href="/accounts/logout">로그아웃</a>
-        </h2>
-            <a href="/create_reservation_calendar">예약석 초기화</a>
-            <a href="/delete_reservation_calendar">예약석 삭제</a>
-            
-        <a href="/admin">관리자 페이지</a>
+        <a href="/create_reservation_calendar">예약석 초기화 &nbsp;&nbsp;</a>
+        <a href="/delete_reservation_calendar">예약석 삭제 &nbsp;&nbsp;</a>    
+        <a href="/admin">관리자 페이지 &nbsp;&nbsp;</a>
+        <a href="/employeeattendance/">관리자 메뉴</a>
+
 
     
     {% else %}
