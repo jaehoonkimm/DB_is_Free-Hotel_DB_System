@@ -1,77 +1,188 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap">
+
     {% block title %}
     {% endblock title %}
     <style>
-        body{
+        body {
+            font-family: 'Nanum Myeongjo', serif;
             background-color: rgb(255, 255, 253);
-            width : 100%;
+            width: 100%;
             height: 100%;
             text-align: center;
         }
-        .navbar{
-            background-color: transparent;
+
+        .navbar {
+            font-family: 'Nanum Myeongjo', serif;
+            background-color: rgb(219, 204, 184);
             font-size: larger;
         }
+
         .footer {
-            width:100%;
-            height:100px;
-            position:absolute;
-            bottom:0;
-            background:black;
+            font-family: 'Nanum Myeongjo', serif;
+            width: 100%;
+            height: 100px;
+            position: absolute;
+            bottom: 0;
+            background: rgb(90, 83, 74);
             text-align: center;
-            color: white;
+            color: black;
         }
-        
+
+        #wrapper {
+            overflow-x: hidden;
+        }
+
+        #sidebar-wrapper {
+            min-height: 100vh;
+            margin-left: -15rem;
+            -webkit-transition: margin .25s ease-out;
+            -moz-transition: margin .25s ease-out;
+            -o-transition: margin .25s ease-out;
+            transition: margin .25s ease-out;
+            font-family: 'Nanum Myeongjo', serif;
+            background-color: rgb(219, 204, 184);
+        }
+
+        #sidebar-wrapper .sidebar-heading {
+            padding: 0.875rem 1.25rem;
+            font-size: 1.2rem;
+            background-color: rgb(219, 204, 184);
+        }
+
+        #sidebar-wrapper .list-group {
+            width: 15rem;
+        }
+
+        #page-content-wrapper {
+            min-width: 100vw;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            margin-left: 0;
+        }
+
+        @media (min-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+
+            #page-content-wrapper {
+                min-width: 0;
+                width: 100%;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: -15rem;
+            }
+        }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/" style="font-family: 맑은 고딕; font-weight: bold; font-size: larger;">DB HOTEL</a>
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item "><a class="nav-link" href="/reservation/" style="font-family: 맑은 고딕; font-weight: bold; font-size: small;">예약하기</a></li>
-                <li class="nav-item "><a class="nav-link" href="/accounts/login/" style="font-family: 맑은 고딕; font-size: small;">로그인</a></li>
-                <li class="nav-item "><a class="nav-link" href="/accounts/signup/" style="font-family: 맑은 고딕; font-size: small;">회원가입</a></li>
-            </ul>
-        </div>
-      </nav>
 
-<!-- 지금 보고 있는 base.html 파일의 block contents 태그가 있는 지점에, 각각의 html 파일들의 block contents 태그 안에 있는 내용이 합쳐집니다 -->
-    {% block contents %}
-    {% endblock contents %}
-<!-- 즉, base.html에서 head태그 안에 있는 block title과 block contents 위 아래로 이것저것 요소들을 넣어주면, 그게 전부 각각의 html 파일들에 반영이 됩니다!-->
-<!-- 새로 만든 html 파일에는 당연히 block을 다른 html 파일들처럼 세팅을 해줘야, base.html이 적용이 됩니다. 이미 만들어져있는 html 파일들을 참고하면 이해가 될 것입니다 -->
-<footer class= "footer">
-    <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-sm-2" style="text-align: center;"><h3>DB<br>HOTEL</h3></div>
-            <div class="col-sm-5 .col-sm-1">
-                <div calss ="row">
-                    <div class="col-sm-3" style="text-align: left;"><p>고객센터</p></div>
-                    <div class="col-sm-3" style="text-align: left;"><p>이용약관</p></div>
-                    <div class="col-sm-3" style="text-align: left;"><p>이메일무단수집금지</p></div>
-                    <div class="col-sm-3" style="text-align: left;"><p>영상정보처리기기운영/관리방침</p></div>
+<body>
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="" id="sidebar-wrapper">
+            <div class="sidebar-heading">직원 전용 메뉴</div>
+            <div class="list-group list-group-flush">
+                <a href="/employeeattendance/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">직원 출퇴근</a>
+                <a href="/emtaskassign/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">직원 업무 배정</a>
+                <a href="/realtimeclaims/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">실시간 업무 배정</a>
+                <a href="#" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">+ 생겨날 메뉴</a>
+                <a href="/admin/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">admin 페이지</a>    
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-md navbar-light">
+
+                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item "><button class="btn" id="menu-toggle"
+                                style="background-color:rgb(151, 139, 124);">
+                                <p style="display: inline; font-size: small; color: black;">직원 메뉴</p>
+                            </button></li>
+                    </ul>
+                </div>
+                <div class="mx-auto order-0">
+                    <a class="navbar-brand mx-auto" href="http://127.0.0.1:8000/"
+                        style="font-weight: bold; font-size: larger;">DB HOTEL</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item "><a class="nav-link" href="/accounts/login/"
+                                style="font-size: small;">로그인</a></li>
+                        <li class="nav-item "><a class="nav-link" href="/accounts/signup/"
+                                style="font-size: small;">회원가입</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            {% block contents %}
+            {% endblock contents %}
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2" style="text-align: center; font-weight: bold;">DB<br>HOTEL</div>
+                <div class="col-sm-3" style="font-weight: bold; font-size: small;">
+                    <p>서울DB호텔 T.02-1234-1234</p>
+                    <p>제주DB호텔 T.064-1234-1234</p>
+                </div>
+                <div class="col-sm-1" style="font-weight: bold; font-size: small; color: rgb(32, 31, 29);">
+                    <p>고객센터</p>
+                    <p>이용약관</p>
+                </div>
+                <div class="col-sm-2" style="font-weight: bold; font-size: small; color: rgb(32, 31, 29);">
+                    <p>이메일무단수집금지</p>
+                    <p>개인정보처리방침</p>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-outline-dark btn-social mx-1" href="https://www.facebook.com/"><i
+                            class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-dark btn-social mx-1" href="https://www.instagram.com/"><i
+                            class="fab fa-fw fa-instagram"></i></a>
+                    <a class="btn btn-outline-dark btn-social mx-1"
+                        href="https://github.com/jaehoonkimm/DB_is_Free-Hotel_DB_System"><i
+                            class="fab fa-fw fa-git"></i></a>
                 </div>
             </div>
-            <div class="col-sm-3 .col-sm-1"><h4 style="text-align: center;">내비게이션</h4>
-            
-        
-            </div>
         </div>
-        <br>
-    </div>
-</footer>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
+
 </html>
