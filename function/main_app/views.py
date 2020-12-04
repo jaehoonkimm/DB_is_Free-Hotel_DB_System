@@ -119,7 +119,7 @@ def em_task_assign(request):
             houseKeepingTaskList = form.save(commit=False)
             #house_keeping_task_creation_timestamp = timezone.now()
             houseKeepingTaskList.save()
-            return redirect('home')
+            return redirect('em_task_assgin')
     else:
         form = EmTaskAssignForm()
     context = {"form": form}
@@ -138,7 +138,7 @@ def realtime_claims(request):
             RealtimeClaim = form.save(commit=False)
             #claim_creation_time = timezone.now()
             RealtimeClaim.save()
-            return redirect('home')
+            return redirect('realtime_claims')
     else:
         form = RealTimeClaimsForm()
     context = {"form": form}
