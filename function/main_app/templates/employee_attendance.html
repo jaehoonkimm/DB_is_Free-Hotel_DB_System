@@ -11,12 +11,19 @@
 
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">출근 확인</h3>
+    <form method="post" class="post-form my-3"> 
     {% csrf_token %}
     {{ form.as_p }}
+    <button type="submit" class="btn btn-dark">배정하기</button>
+    </form>
 
     <h3 class="my-3 border-bottom pb-2">퇴근 확인</h3>
+    <form method="post" class="post-form my-3"> 
     {% csrf_token %}
     {{ form.as_p }}
+    <button type="submit" class="btn btn-dark">배정하기</button>
+    </form>
+    
 </div>
 
 {% endblock contents %}
