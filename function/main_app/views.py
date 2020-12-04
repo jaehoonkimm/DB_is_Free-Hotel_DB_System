@@ -127,8 +127,18 @@ def em_task_assign(request):
 
 #직원 출퇴근 기능
 def employee_attendance(request):
-    form = EmployeeattendanceForm()
-    return render(request, 'employee_attendance.html', {'form':form})
+    if request.method == "POST":
+        form = EmployeeattendanceForm(request.POST)
+        if form.is_valid():
+            OfficeCheckOn = form.save(commit=False)
+            #house_keeping_task_creation_timestamp = timezone.now()
+            OfficeCheckOn.save()
+            return redirect('em_task_assgin')
+    else:
+        form = EmployeeattendanceForm()
+    context = {"form": form}
+    return render(request, 'employee_attendance.html', context)
+
 
 #실시간 고객 요청 - 직원 업무 할당
 def realtime_claims(request):
