@@ -17,6 +17,7 @@
             text-align: center;
         }
         .navbar{
+            height: 80px;
             font-family: 'Nanum Myeongjo', serif;
             background-color:rgb(219, 204, 184);
             font-size: larger;
@@ -34,47 +35,13 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light">
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item "><a class="nav-link" href="/reservation/" style="font-weight: bold; font-size: medium;">예약하기</a></li>
-            </ul>
-        </div>
-        <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" href="http://127.0.0.1:8000/" style="font-weight: bold; font-size: larger;">DB HOTEL</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item "><a class="nav-link" href="/accounts/login/" style="font-size: small;">로그인</a></li>
-                <li class="nav-item "><a class="nav-link" href="/accounts/signup/" style="font-size: small;">회원가입</a></li>
-            </ul>
-        </div>
-    </nav>
+    
 <!-- 지금 보고 있는 base.html 파일의 block contents 태그가 있는 지점에, 각각의 html 파일들의 block contents 태그 안에 있는 내용이 합쳐집니다 -->
     {% block contents %}
     {% endblock contents %}
 <!-- 즉, base.html에서 head태그 안에 있는 block title과 block contents 위 아래로 이것저것 요소들을 넣어주면, 그게 전부 각각의 html 파일들에 반영이 됩니다!-->
 <!-- 새로 만든 html 파일에는 당연히 block을 다른 html 파일들처럼 세팅을 해줘야, base.html이 적용이 됩니다. 이미 만들어져있는 html 파일들을 참고하면 이해가 될 것입니다 -->
-<footer class= "footer">
-    <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2" style="text-align: center; font-weight: bold;">DB<br>HOTEL</div>
-            <div class="col-sm-3" style="font-weight: bold; font-size: small;"><p>서울DB호텔 T.02-1234-1234</p><p>제주DB호텔 T.064-1234-1234</p></div>
-            <div class="col-sm-1" style="font-weight: bold; font-size: small; color: rgb(32, 31, 29);"><p>고객센터</p><p>이용약관</p></div>
-            <div class="col-sm-2" style="font-weight: bold; font-size: small; color: rgb(32, 31, 29);"><p>이메일무단수집금지</p><p>개인정보처리방침</p></div>
-            <div class="col-sm-3">
-                <a class="btn btn-outline-dark btn-social mx-1" href="https://www.facebook.com/"><i class="fab fa-fw fa-facebook-f"></i></a>
-                <a class="btn btn-outline-dark btn-social mx-1" href="https://www.instagram.com/"><i class="fab fa-fw fa-instagram"></i></a>
-                <a class="btn btn-outline-dark btn-social mx-1" href="https://github.com/jaehoonkimm/DB_is_Free-Hotel_DB_System"><i class="fab fa-fw fa-git"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
