@@ -4,17 +4,19 @@
 {% providers_media_js %}
 
 {% block title %}
-    <title>Employee Attendance Page</title>
+<title>Employee Attendance Page</title>
 {% endblock title %}
 
 {% block contents %}
 
-직원 출근 페이지
-<h3 class="my-3 border-bottom pb-2">출근 확인</h3>
+<div class="para">
+    <h3 class="my-3 border-bottom pb-2">출근 확인</h3>
     {% csrf_token %}
     {{ form.as_p }}
 
-<h3 class="my-3 border-bottom pb-2">퇴근 확인</h3>
+    <h3 class="my-3 border-bottom pb-2">퇴근 확인</h3>
     {% csrf_token %}
-    {{ form.as_p }}   
+    {{ form.as_p }}
+</div>
+
 {% endblock contents %}
