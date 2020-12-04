@@ -1,0 +1,33 @@
+{% extends "base2.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+{% block title %}
+    <title>Room Status Page</title>
+{% endblock title %}
+
+
+{% block contents %}
+
+<div class="para">
+    <h3 class="my-3 border-bottom pb-2">객실 현황</h3>
+    <div class="my-3 pb-2" style="border: 10px solid slategray; 
+                                margin: auto; 
+                                display: flex; flex-direction: row;
+                                width: 95%; height: auto;">
+                                <br/>
+        {% for room in room_list %}
+            <div class="col col-sm-2" 
+            style=" height: 10%; border: 3px solid cadetblue; 
+                    font-size: 20px; font-weight: bolder;">
+                {{ room.room_id }} - 
+                [ {{ room.room_grade_id }} ]
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+   
+{% endblock contents %}
