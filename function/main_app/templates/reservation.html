@@ -11,18 +11,49 @@
 
 {% block contents %}
 
-예약 페이지
-<h3 class="my-3 border-bottom pb-2">예약하기</h3>
-    <form method="post" class="post-form my-3">
+{% if not not_empty_rooms %}
+    <h3 class="my-3 border-bottom pb-2">예약하기</h3>
+    <form method="post" class="post-form my-3" style="width: 20%; margin: 0 auto;">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">예약하기</button>
+        <input type="button" value="뒤로가기" class="btn btn-primary" onClick="history.go(-1)">
     </form>
+{% endif %}
+    
+{% if not_empty_rooms %}
+    <div id="not_empty_rooms_message" title = "not_empty_rooms_message">
+        <br />
+        <p style="font-size: large;">해당 등급의 예약 가능한 객실이 없는 날짜가 포함되어 있습니다.</p>
+        <input type="button" value="뒤로가기" class="btn btn-primary" onClick="history.go(-1)">
+    </div>
+{% endif %}
 
     <script>
         $(function () {
             $('.datetime-input').datetimepicker({
                 format:'YYYY-MM-DD'
+            });
+        });
+
+        $(document).ready(function() {
+            $(function() {
+                $( "#not_empty_rooms_message" ).dialog({
+                    modal: true,
+                    closeOnEscape: false,
+                    dialogClass: "no-close",
+                    resizable: false,
+                    draggable: false,
+                    width: 600,
+                    buttons: [
+                        {
+                            text: "OK",
+                            click: function() {
+                            $( this ).dialog( "close" );
+                            }
+                        }
+                    ]
+                });
             });
         });
     </script>
