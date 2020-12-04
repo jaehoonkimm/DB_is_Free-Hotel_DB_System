@@ -30,18 +30,18 @@ class EmTaskAssignForm(forms.ModelForm):
     class Meta:
         model = HouseKeepingTaskList
         fields = [ #'house_keeping_task_start_time', 'house_keeping_task_end_time',
-                'room', 'employee', 'extra_note'
+                'room', 'employee',
                 ]
         labels = {
             #'house_keeping_task_start_time': '업무 시작시간',
             #'house_keeping_task_end_time': '업무 마감시간',
             'room': '객실 번호',
             'employee': '직원',
-            'extra_note' : '추가 기록사항'
+            #'extra_note' : '추가 기록사항'
         }
-        widgets = {
-            'extra_note': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-        }
+        #widgets = {
+         #   'extra_note': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        #}
         
         
 

@@ -163,7 +163,7 @@ class HouseKeepingTaskList(models.Model):
     #house_keeping_task_creation_timestamp = models.DateTimeField(db_column='HOUSE_KEEPING_TASK_CREATION_TIMESTAMP')  # Field name made lowercase.
     house_keeping_task_start_time = models.TimeField(db_column='HOUSE_KEEPING_TASK_START_TIME', blank=True, null=True)  # Field name made lowercase.
     house_keeping_task_end_time = models.TimeField(db_column='HOUSE_KEEPING_TASK_END_TIME', blank=True, null=True)  # Field name made lowercase.
-    extra_note = models.CharField(db_column='EXTRA_NOTE', max_length=300, blank=True, null=True)  # Field name made lowercase.
+    #extra_note = models.CharField(db_column='EXTRA_NOTE', max_length=300, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
