@@ -52,20 +52,20 @@ def reservation(request):
                 if(str(day_in_calendar[0]) == str(reservation.reservation_start_date) and date.room_grade == reservation.room_type_grade):
                     start_checker = 1
                     temp = date.reservation_count
-                    if (temp < 1):
-                        return redirect('home')
+                    if (temp < 1): # 예약 가능한 잔여석이 없을 경우
+                        return render(request, 'reservation.html', {'not_empty_rooms':True})
                     date.reservation_count = temp-1
                     
                 elif(start_checker == 1 and str(day_in_calendar[0]) != str(reservation.reservation_end_date)):
                     temp = date.reservation_count
-                    if (temp < 1):
-                        return redirect('home')
+                    if (temp < 1): # 예약 가능한 잔여석이 없을 경우
+                        return render(request, 'reservation.html', {'not_empty_rooms':True})
                     date.reservation_count = temp-1
 
                 elif(start_checker == 1 and str(day_in_calendar[0]) == str(reservation.reservation_end_date)):
                     temp = date.reservation_count
-                    if (temp < 1):
-                        return redirect('home')
+                    if (temp < 1): # 예약 가능한 잔여석이 없을 경우
+                        return render(request, 'reservation.html', {'not_empty_rooms':True})
                     date.reservation_count = temp-1
                     date.save()
                     break
