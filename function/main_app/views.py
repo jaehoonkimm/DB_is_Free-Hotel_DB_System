@@ -18,6 +18,10 @@ def home(request):
     room_list = ReservationCalendar.objects.all().values()
     return render(request, 'index.html', {'reserv_day':reserv_day, 'room_list':room_list})
 
+def room_status(request):
+    room_status = RoomList.objects.all()
+    return render(request, 'room_status.html', {'room_list':room_status})
+
 def create_reservation_calendar(request):
     all_date = Calendar.objects.all()
     all_room_type = []

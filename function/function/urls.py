@@ -32,4 +32,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('create_reservation_calendar/', views.create_reservation_calendar, name='create_reservation_calendar'),
     path('delete_reservation_calendar/', views.delete_reservation_calendar, name='delete_reservation_calendar'),
+    path('room_status/', views.room_status, name='room_status'), 
 ]
