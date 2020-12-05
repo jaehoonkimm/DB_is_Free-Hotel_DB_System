@@ -1,0 +1,42 @@
+{% extends "base2.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+<meta charset="utf-8">
+
+{% block title %}
+    <title>직원 업무 확인 및 체크 페이지</title>
+{% endblock title %}
+
+
+{% block contents %}
+<div class="para"></div>
+    <h3 class="my-3 border-bottom pb-2"> MY PAGE</h3>
+
+    <h5 class="my-3 border-bottom pb-2">배정 받은 업무</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td><B>업무</B></td>
+                <td><B>추가사항</B></td>
+                <td><B>객실 번호</B></td>
+                <td><B>업무 시간기록</B></td>
+            </tr>
+            </thead>
+
+    <tbody>
+        {% for RealtimeClaim in your_task %}
+        <tr>
+            <td> 내용{{ realtimeclaim.realtime_clain_content }}</td>
+            <td> { realtimeclaim.claim_note }} </td>
+            <td> {{ realtimeclaim.check_in }}호 </td>
+            <td> <button type="submit" class="btn btn-dark">시작하기</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</div>
+
+   
+{% endblock contents %}

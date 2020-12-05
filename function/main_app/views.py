@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
 from django.contrib import auth
 from .models import *
 
@@ -150,3 +152,10 @@ def realtime_claims(request):
         form = RealTimeClaimsForm()
     context = {"form": form}
     return render(request, 'realtime_claims.html', context)
+
+#직원 마이페이지 - 업무 불러오기
+def em_mytask(request):
+    log_id = request.user.id
+    your_task = RealtimeClaim.objects.all()
+    context = {'your_task':your_task}
+    return render(request, 'mypage.html', context)
