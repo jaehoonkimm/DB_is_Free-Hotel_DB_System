@@ -5,20 +5,39 @@
 
 
 {% block title %}
-    <title>Real-Time Claims Page</title>
+<title>Real-Time Claims Page</title>
 {% endblock title %}
 
 
 {% block contents %}
 
-<div class="para">
+<div class="para" style="margin-top: 25px;">
     <h3 class="my-3 border-bottom pb-2">실시간 업무 배정</h3>
-    <form method="post" class="post-form my-3"> 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-dark">배정하기</button>
+    <br>
+    <form method="post" class="post-form my-3">
+        {% csrf_token %}
+        <p><label for="id_realtime_clain_content" style="font-weight: bold;">요청&nbsp;&nbsp;&nbsp;&nbsp;업무&nbsp;:&nbsp;&nbsp;</label> <input type="text" name="realtime_clain_content"
+                maxlength="300" id="id_realtime_clain_content"></p>
+        <p><label for="id_claim_note" style="font-weight: bold;">자세한 요청사항을 기입해주세요</label> <textarea name="claim_note" cols="40" rows="5"
+                class="form-control" maxlength="300" id="id_claim_note" style="margin-left: 550px; height: 300px; width: 600px;" ></textarea></p>
+        <p><label for="id_check_in" style="font-weight: bold;">체크인번호&nbsp;:&nbsp;&nbsp;</label> <select name="check_in" required id="id_check_in" style="height: 30px; width: 190px;">
+                <option value="" selected>---------</option>
+
+                <option value="1">CheckIn object (1)</option>
+
+            </select></p>
+        <p><label for="id_employee" style="font-weight: bold;">직원&nbsp;&nbsp;&nbsp;&nbsp;이름&nbsp;:&nbsp;&nbsp;</label> <select name="employee" id="id_employee" style="height: 30px; width: 190px;">
+                <option value="" selected>---------</option>
+
+                <option value="1">Employees object (1)</option>
+
+                <option value="2">Employees object (2)</option>
+
+            </select></p>
+            <br>
+        <button type="submit" class="btn btn-dark">배정하기</button>
     </form>
 </div>
 
-   
+
 {% endblock contents %}
