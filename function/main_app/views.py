@@ -23,6 +23,9 @@ def room_status(request):
     return render(request, 'room_status.html', {'room_list':room_status})
 
 def create_reservation_calendar(request):
+    querySet = ReservationCalendar.objects.all()
+    querySet.delete()
+
     all_date = Calendar.objects.all()
     all_room_type = []
     for room_type in RoomTypeInfo.objects.all():
