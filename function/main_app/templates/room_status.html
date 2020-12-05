@@ -13,18 +13,30 @@
 
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">객실 현황</h3>
-    <div class="my-3 pb-2" style="border: 10px solid slategray; 
+    <div class="my-3" style="border: 5px solid slategray; 
                                 margin: auto; 
                                 display: flex; flex-direction: row;
                                 width: 95%; height: auto;">
                                 <br/>
         {% for room in room_list %}
             <div class="col col-sm-2" 
-            style=" height: 10%; border: 3px solid cadetblue; 
+            style="border: 3px solid cadetblue; 
                     font-size: 20px; font-weight: bolder;">
-                {}
+                {% if room.room_id > 600 %}
                     {{ room.room_id }} - 
-                    [ {{ room.room_grade_id }} ]
+                    [{{ room.room_grade_id }}] <br />
+                        {% if  room.room_stay == 1%}
+                        [🔵] <!--객실 체크인 상태-->
+                        {% else %}
+                        [⚪️] <!--객실 공실 상태-->
+                        {% endif %}
+                        
+                        {% if  room_check_housekeeping == 1%}
+                        [⭕️] <!--객실 하우스키핑 완료 상태-->
+                        {% else %}
+                        [❌] <!--객실 하우스키핑 필요 상태-->
+                        {% endif %}
+                {% endif %}
             </div>
         {% endfor %}
     </div>
