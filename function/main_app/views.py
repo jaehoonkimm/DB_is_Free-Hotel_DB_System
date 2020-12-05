@@ -6,7 +6,9 @@ from .models import *
 from .forms import ReservationForm
 from .forms import EmTaskAssignForm
 from .forms import RealTimeClaimsForm
-from .forms import EmployeeattendanceForm
+from .forms import EmployeeattendancecheckonForm
+from .forms import EmployeeattendancecheckoutForm
+from .forms import ParkinglotForm
 
 from django.utils import timezone
 now = timezone.localtime()
@@ -127,17 +129,10 @@ def em_task_assign(request):
 
 #직원 출퇴근 기능
 def employee_attendance(request):
-    if request.method == "POST":
-        form = EmployeeattendanceForm(request.POST)
-        if form.is_valid():
-            OfficeCheckOn = form.save(commit=False)
-            #house_keeping_task_creation_timestamp = timezone.now()
-            OfficeCheckOn.save()
-            return redirect('em_task_assgin')
-    else:
-        form = EmployeeattendanceForm()
-    context = {"form": form}
-    return render(request, 'employee_attendance.html', context)
+    form1 = EmployeeattendancecheckonForm()
+    form2 = EmployeeattendancecheckoutForm()
+    return render(request, 'employee_attendance.html', {'form1':form1, 'form2':form2})
+
 
 
 #실시간 고객 요청 - 직원 업무 할당
@@ -153,3 +148,17 @@ def realtime_claims(request):
         form = RealTimeClaimsForm()
     context = {"form": form}
     return render(request, 'realtime_claims.html', context)
+
+#주차 예약 기능
+def parking_lot(request):
+    form1 = EmployeesParkingSystem.objects.order_by('car_plate_number')
+    form2 = CustomerParkingSystem.objects.order_by('car_plate_number')
+    context = {'form1' : form1, 'form2' : form2}
+    return render(request, 'parking_lot.html', context)
+
+
+def parking_lot_detail(request, pid):
+    form = EmployeesParkingSystem.objects.get(pk=pid)
+    form = EmployeesParkingSystem.objects.order_by('car_plate_number')
+    context = {'form': form}
+    return render(request, 'parking_lot_detail.html', context)
