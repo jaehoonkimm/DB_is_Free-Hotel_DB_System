@@ -6,6 +6,14 @@
 
 {% block title %}
     <title>Room Status Page</title>
+    <style>
+        .room_box {
+            border: 3px solid cadetblue; 
+            font-size: 20px; 
+            font-weight: bolder;
+            margin-right: 2px;
+        }
+    </style>
 {% endblock title %}
 
 
@@ -13,20 +21,166 @@
 
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">객실 현황</h3>
-    <div class="my-3 pb-2" style="border: 10px solid slategray; 
+
+    <!-- 10층 (1000번 호수대) 객실 표시 -->
+    <div class="my-3" style="border: 5px solid white; 
                                 margin: auto; 
                                 display: flex; flex-direction: row;
                                 width: 95%; height: auto;">
                                 <br/>
         {% for room in room_list %}
-            <div class="col col-sm-2" 
-            style=" height: 10%; border: 3px solid cadetblue; 
-                    font-size: 20px; font-weight: bolder;">
-                {{ room.room_id }} - 
-                [ {{ room.room_grade_id }} ]
-            </div>
+                {% if room.room_id > 1000 and room.room_id < 1100 %}
+                <div class="col col-sm-1 room_box" >
+                    {{ room.room_id }}<br />
+                    [{{ room.room_grade_id }}]<br />
+                        {% if  room.room_stay == 1%}
+                        [🔵] <!--객실 체크인 상태-->
+                        {% else %}
+                        [⚪️] <!--객실 공실 상태-->
+                        {% endif %}
+                        {% if  room.room_check_housekeeping == 1%}
+                        [⭕️] <!--객실 하우스키핑 완료 상태-->
+                        {% else %}
+                        [❌] <!--객실 하우스키핑 필요 상태-->
+                        {% endif %}
+                    </div>
+                {% endif %}
         {% endfor %}
     </div>
+
+    <!-- 9층 (900번 호수대) 객실 표시 -->
+    <div class="my-3" style="border: 5px solid white; 
+                                margin: auto; 
+                                display: flex; flex-direction: row;
+                                width: 95%; height: auto;">
+                                <br/>
+        {% for room in room_list %}
+                {% if room.room_id > 900 and room.room_id < 1000 %}
+                <div class="col col-sm-1 room_box">
+                    {{ room.room_id }}<br />
+                    [{{ room.room_grade_id }}]<br />
+                        {% if  room.room_stay == 1%}
+                        [🔵] <!--객실 체크인 상태-->
+                        {% else %}
+                        [⚪️] <!--객실 공실 상태-->
+                        {% endif %}
+                        {% if  room.room_check_housekeeping == 1%}
+                        [⭕️] <!--객실 하우스키핑 완료 상태-->
+                        {% else %}
+                        [❌] <!--객실 하우스키핑 필요 상태-->
+                        {% endif %}
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>    
+
+    <!-- 8층 (800번 호수대) 객실 표시 -->
+    <div class="my-3" style="border: 5px solid white; 
+                                margin: auto; 
+                                display: flex; flex-direction: row;
+                                width: 95%; height: auto;">
+                                <br/>
+        {% for room in room_list %}
+                {% if room.room_id > 800 and room.room_id < 900 %}
+                <div class="col col-sm-1 room_box">
+                    {{ room.room_id }}<br />
+                    [{{ room.room_grade_id }}]<br />
+                        {% if  room.room_stay == 1%}
+                        [🔵] <!--객실 체크인 상태-->
+                        {% else %}
+                        [⚪️] <!--객실 공실 상태-->
+                        {% endif %}
+                        {% if  room.room_check_housekeeping == 1%}
+                        [⭕️] <!--객실 하우스키핑 완료 상태-->
+                        {% else %}
+                        [❌] <!--객실 하우스키핑 필요 상태-->
+                        {% endif %}
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>
+
+        <!-- 7층 (700번 호수대) 객실 표시 -->
+    <div class="my-3" style="border: 5px solid white; 
+                                margin: auto; 
+                                display: flex; flex-direction: row;
+                                width: 95%; height: auto;">
+                                <br/>
+        {% for room in room_list %}
+                {% if room.room_id > 700 and room.room_id < 800 %}
+                <div class="col col-sm-1 room_box">
+                    {{ room.room_id }}<br />
+                    [{{ room.room_grade_id }}]<br />
+                        {% if  room.room_stay == 1%}
+                        [🔵] <!--객실 체크인 상태-->
+                        {% else %}
+                        [⚪️] <!--객실 공실 상태-->
+                        {% endif %}
+                        {% if  room.room_check_housekeeping == 1%}
+                        [⭕️] <!--객실 하우스키핑 완료 상태-->
+                        {% else %}
+                        [❌] <!--객실 하우스키핑 필요 상태-->
+                        {% endif %}
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- 6층 (600번 호수대) 객실 표시 -->
+    <div class="my-3" style="border: 5px solid white; 
+                                margin: auto; 
+                                display: flex; flex-direction: row;
+                                width: 95%; height: auto;">
+                                <br/>
+        {% for room in room_list %}
+                {% if room.room_id > 600 and room.room_id < 700 %}
+                <div class="col col-sm-1 room_box">
+                    {{ room.room_id }}<br />
+                    [{{ room.room_grade_id }}]<br />
+                        {% if  room.room_stay == 1%}
+                        [🔵] <!--객실 체크인 상태-->
+                        {% else %}
+                        [⚪️] <!--객실 공실 상태-->
+                        {% endif %}
+                        {% if  room.room_check_housekeeping == 1%}
+                        [⭕️] <!--객실 하우스키핑 완료 상태-->
+                        {% else %}
+                        [❌] <!--객실 하우스키핑 필요 상태-->
+                        {% endif %}
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- 6층 (600번 호수대) 객실 표시 -->
+    <div class="my-3" style="border: 5px solid white; 
+                                margin: auto; 
+                                display: flex; flex-direction: row;
+                                width: 95%; height: auto;">
+                                <br/>
+        {% for room in room_list %}
+                {% if room.room_id > 500 and room.room_id < 600 %}
+                <div class="col col-sm-1 room_box">
+                    {{ room.room_id }}<br />
+                    [{{ room.room_grade_id }}]<br />
+                        {% if  room.room_stay == 1%}
+                        [🔵] <!--객실 체크인 상태-->
+                        {% else %}
+                        [⚪️] <!--객실 공실 상태-->
+                        {% endif %}
+                        {% if  room.room_check_housekeeping == 1%}
+                        [⭕️] <!--객실 하우스키핑 완료 상태-->
+                        {% else %}
+                        [❌] <!--객실 하우스키핑 필요 상태-->
+                        {% endif %}
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>
+
+
+
+
 </div>
 
    
