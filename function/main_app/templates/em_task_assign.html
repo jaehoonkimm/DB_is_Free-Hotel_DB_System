@@ -16,49 +16,8 @@
     <br>
     <form method="post" class="post-form my-3"> 
     {% csrf_token %}
-    <p><label for="id_room" style="font-weight: bold;">객실 번호&nbsp;:&nbsp;&nbsp;</label> <select name="room" required id="id_room" style="height: 30px; width: 190px;">
-  <option value="" selected>---------</option>
+    {{ form.as_p }}
 
-  <option value="501">RoomList object (501)</option>
-
-  <option value="502">RoomList object (502)</option>
-
-  <option value="503">RoomList object (503)</option>
-
-  <option value="504">RoomList object (504)</option>
-
-  <option value="551">RoomList object (551)</option>
-
-  <option value="552">RoomList object (552)</option>
-
-  <option value="553">RoomList object (553)</option>
-
-  <option value="554">RoomList object (554)</option>
-
-  <option value="591">RoomList object (591)</option>
-
-  <option value="592">RoomList object (592)</option>
-
-  <option value="651">RoomList object (651)</option>
-
-  <option value="701">RoomList object (701)</option>
-
-  <option value="801">RoomList object (801)</option>
-
-  <option value="901">RoomList object (901)</option>
-
-  <option value="1001">RoomList object (1001)</option>
-
-</select></p>
-<p><label for="id_employee" style="font-weight: bold;">직원 이름&nbsp;:&nbsp;&nbsp;</label> <select name="employee" id="id_employee" style="height: 30px; width: 190px;">
-  <option value="" selected>---------</option>
-
-  <option value="1">Employees object (1)</option>
-
-  <option value="2">Employees object (2)</option>
-
-</select></p>
-    <br>
     <button type="submit" class="btn btn-dark">배정하기</button>
     </form>
 </div>

@@ -4,6 +4,8 @@ from .models import HouseKeepingTaskList
 from .models import RealtimeClaim
 from .models import OfficeCheckOn
 from .models import OfficeCheckOut
+from .models import CustomerParkingSystem
+from .models import EmployeesParkingSystem
 
 class ReservationForm(forms.ModelForm):
     class Meta:
@@ -53,15 +55,18 @@ class EmTaskAssignForm(forms.ModelForm):
         
         
 
-class EmployeeattendanceForm(forms.ModelForm):
+class EmployeeattendancecheckonForm(forms.ModelForm):
     class Meta:
         model = OfficeCheckOn
         fields = ['office_check_on_timestamp', 'employee'
                 ]
+
+class EmployeeattendancecheckoutForm(forms.ModelForm):
     class Meta:
         model = OfficeCheckOut
         fields = ['office_check_out_timestamp', 'employee'
                 ]
+
 
 class RealTimeClaimsForm(forms.ModelForm):
     class Meta:
@@ -80,4 +85,13 @@ class RealTimeClaimsForm(forms.ModelForm):
         }
         #'claim_task_end_time' = forms.DateTimeField(help_text="실시간 고객 요청 받은 시간")
         #renewal_date = forms.DateField(help_text="Enter.")
-    
+
+class ParkinglotForm(forms.ModelForm):
+    class Meta:
+        model = CustomerParkingSystem
+        fields = [ 'car_plate_number', 'parking_location', 'parking_in_timestamp'
+                ]
+    class Meta:
+        model = EmployeesParkingSystem
+        fields = ['employee', 'car_plate_number', 'parking_location', 'parking_in_timestamp'
+                ]

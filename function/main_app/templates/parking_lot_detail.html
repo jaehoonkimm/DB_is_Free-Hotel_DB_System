@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block title %}
+<title>Parking Lot detail Page</title>
+{% endblock title %}
+
+{% block contents %}
+주차 정보
+
+<h3 class="my-3 border-bottom pb-2">상세 정보 필드</h3>
+    {% if form %}
+        <ul>
+            {% for EmployeesParkingSystem in form %}
+                <a>{{ EmployeesParkingSystem.car_plate_number }}</a>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    employee = {{ EmployeesParkingSystem.employee }}<br>
+    car_plate_number = {{ EmployeesParkingSystem.car_plate_number }}<br>
+    parking_location = {{ EmployeesParkingSystem.parking_location }}<br>
+    parking_in_timestamp = {{ EmployeesParkingSystem.parking_in_timestamp }}<br>
+{% endblock contents %}
