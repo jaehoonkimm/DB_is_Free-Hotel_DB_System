@@ -14,7 +14,7 @@ class CustomerAdmin(admin.ModelAdmin):
     search_fields = ['customer_first_name', 'customer_phone_number', 'customer_group']
 
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ['reservation_id', 'customer', 'room_type_grade', 'reservation_online_name', 'reservation_prepayment', 'reservation_requests',
+    list_display = ['reservation_id', 'customer_id', 'room_type_grade', 'reservation_online_name', 'reservation_prepayment', 'reservation_requests',
                     'reservation_card_number', 'reservation_adult_count', 'reservation_child_count', 'reservation_group', 'reservation_regist_timestamp',
                     'reservation_start_date', 'reservation_end_date', 'reservation_breakfast_included', 'reservation_check_in_time', 'reservation_check_out_time']
     list_filter = ('room_type_grade', 'reservation_group', 

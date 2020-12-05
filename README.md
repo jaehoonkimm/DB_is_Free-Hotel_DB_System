@@ -1,4 +1,13 @@
 # DB Project
+## Requirements
+```terminal
+ pip install django
+ pip install pymysql
+ pip install django-mysql
+ pip install django-suit
+ pip install django-allauth
+ pip install django-admin-rangefilter
+```
 ## 변경점 및 참고사항(수시로 업데이트)  
 #### django-admin-rangefilter 추가  
 - pip install django-admin-rangefilter

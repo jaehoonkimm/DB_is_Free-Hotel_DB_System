@@ -5,7 +5,7 @@
 
 
 {% block title %}
-    <title>Real-Time Claims Page</title>
+<title>Real-Time Claims Page</title>
 {% endblock title %}
 
 
@@ -13,12 +13,13 @@
 
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">실시간 업무 배정</h3>
-    <form method="post" class="post-form my-3"> 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-dark">배정하기</button>
+    <br>
+    <form method="post" class="post-form my-3" style="width: 20%; margin: 0 auto;"> 
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-dark">배정하기</button>
     </form>
 </div>
 
-   
+
 {% endblock contents %}

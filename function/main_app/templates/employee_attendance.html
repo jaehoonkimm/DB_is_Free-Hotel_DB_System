@@ -9,16 +9,25 @@
 
 {% block contents %}
 
+
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">출근 확인</h3>
-    <form method="post" class="post-form my-3"> 
+
+
+
+    <br>
+
     {% csrf_token %}
     {{ form1.as_p }}
     <button type="submit" class="btn btn-dark">배정하기</button>
     </form>
 
     <h3 class="my-3 border-bottom pb-2">퇴근 확인</h3>
-    <form method="post" class="post-form my-3"> 
+
+
+
+    <br>
+
     {% csrf_token %}
     {{ form2.as_p }}
     <button type="submit" class="btn btn-dark">배정하기</button>
