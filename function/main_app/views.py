@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
 from django.contrib import auth
 from .models import *
 
@@ -18,7 +20,14 @@ def home(request):
     room_list = ReservationCalendar.objects.all().values()
     return render(request, 'index.html', {'reserv_day':reserv_day, 'room_list':room_list})
 
+def room_status(request):
+    room_status = RoomList.objects.all()
+    return render(request, 'room_status.html', {'room_list':room_status})
+
 def create_reservation_calendar(request):
+    querySet = ReservationCalendar.objects.all()
+    querySet.delete()
+
     all_date = Calendar.objects.all()
     all_room_type = []
     for room_type in RoomTypeInfo.objects.all():
@@ -143,3 +152,10 @@ def realtime_claims(request):
         form = RealTimeClaimsForm()
     context = {"form": form}
     return render(request, 'realtime_claims.html', context)
+
+#직원 마이페이지 - 업무 불러오기
+def em_mytask(request):
+    log_id = request.user.id
+    your_task = RealtimeClaim.objects.all()
+    context = {'your_task':your_task}
+    return render(request, 'mypage.html', context)

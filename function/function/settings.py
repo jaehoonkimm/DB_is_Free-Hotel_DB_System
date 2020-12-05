@@ -27,7 +27,11 @@ SECRET_KEY = 'tnxk&%18)&^49%xw-d!yhu35(yaz*gjy=9yqtq%xa1%%kp^^#+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['3.35.49.94',
+                '127.0.0.1',
+                '127.0.0.1:8000'
+                ".ap-northeast-2.compute.amazonaws.com",
+                ".dbisfree.shop",]
 
 
 # Application definition
@@ -175,3 +179,4 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
+

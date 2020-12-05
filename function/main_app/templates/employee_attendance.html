@@ -9,12 +9,15 @@
 
 {% block contents %}
 
+
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">출근 확인</h3>
+    <br>
     {% csrf_token %}
     {{ form.as_p }}
 
     <h3 class="my-3 border-bottom pb-2">퇴근 확인</h3>
+    <br>
     {% csrf_token %}
     {{ form.as_p }}
 </div>
