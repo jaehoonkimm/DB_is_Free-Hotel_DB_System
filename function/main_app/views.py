@@ -143,3 +143,31 @@ def realtime_claims(request):
         form = RealTimeClaimsForm()
     context = {"form": form}
     return render(request, 'realtime_claims.html', context)
+
+#직원 마이페이지 - 업무 불러오기
+def em_mytask(request):
+    log_id = request.user.id
+    get_last_id = User.objects.filter(last_name)
+    get_first_id = User.objects.filter(first_name)
+    if (log_id[0] == 'get_last_id') :
+        if (log_id[1] == 'get_first_id[0]') :
+            if (log_id[2] == 'get_first_id[1]') :
+                your_name = request.user.id
+                your_task = RealtimeClaim.objects.all()
+                context = {'your_task':your_task}
+    else:
+        msg = '배정받은 업무가 없습니다. '
+        return render(request, 'em_mypage.html', {'message': msg})
+    return render(request, 'em_mypage.html', context)
+
+# 직원 마이페이지 - 업무 보여주기
+def areas(request, area):
+    your_task = RealtimeClaim.objects.filter(area = area) #Candidate의 area와 매개변수 area가 같은 객체만 불러오기
+    context = {'your_task':your_task,
+                'area' : area}
+    return render(request, 'em_mypage.html', context)#그 정보는 area로 전달된다
+
+
+
+    
+    

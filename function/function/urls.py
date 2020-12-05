@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main_app import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +33,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('create_reservation_calendar/', views.create_reservation_calendar, name='create_reservation_calendar'),
     path('delete_reservation_calendar/', views.delete_reservation_calendar, name='delete_reservation_calendar'),
+    path('room_status/', views.room_status, name='room_status'), 
+    path('mypage/', views.areas, name="areas"),
 ]
