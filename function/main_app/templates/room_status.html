@@ -30,7 +30,7 @@
                                 <br/>
         {% for room in room_list %}
                 {% if room.room_id > 1000 and room.room_id < 1100 %}
-                <div class="col col-sm-2 room_box" >
+                <div class="col col-sm-1 room_box" >
                     {{ room.room_id }}<br />
                     [{{ room.room_grade_id }}]<br />
                         {% if  room.room_stay == 1%}
@@ -38,7 +38,7 @@
                         {% else %}
                         [⚪️] <!--객실 공실 상태-->
                         {% endif %}
-                        {% if  room_check_housekeeping == 1%}
+                        {% if  room.room_check_housekeeping == 1%}
                         [⭕️] <!--객실 하우스키핑 완료 상태-->
                         {% else %}
                         [❌] <!--객실 하우스키핑 필요 상태-->
@@ -56,7 +56,7 @@
                                 <br/>
         {% for room in room_list %}
                 {% if room.room_id > 900 and room.room_id < 1000 %}
-                <div class="col col-sm-2 room_box">
+                <div class="col col-sm-1 room_box">
                     {{ room.room_id }}<br />
                     [{{ room.room_grade_id }}]<br />
                         {% if  room.room_stay == 1%}
@@ -64,7 +64,7 @@
                         {% else %}
                         [⚪️] <!--객실 공실 상태-->
                         {% endif %}
-                        {% if  room_check_housekeeping == 1%}
+                        {% if  room.room_check_housekeeping == 1%}
                         [⭕️] <!--객실 하우스키핑 완료 상태-->
                         {% else %}
                         [❌] <!--객실 하우스키핑 필요 상태-->
@@ -82,7 +82,7 @@
                                 <br/>
         {% for room in room_list %}
                 {% if room.room_id > 800 and room.room_id < 900 %}
-                <div class="col col-sm-2 room_box">
+                <div class="col col-sm-1 room_box">
                     {{ room.room_id }}<br />
                     [{{ room.room_grade_id }}]<br />
                         {% if  room.room_stay == 1%}
@@ -90,7 +90,7 @@
                         {% else %}
                         [⚪️] <!--객실 공실 상태-->
                         {% endif %}
-                        {% if  room_check_housekeeping == 1%}
+                        {% if  room.room_check_housekeeping == 1%}
                         [⭕️] <!--객실 하우스키핑 완료 상태-->
                         {% else %}
                         [❌] <!--객실 하우스키핑 필요 상태-->
@@ -108,7 +108,7 @@
                                 <br/>
         {% for room in room_list %}
                 {% if room.room_id > 700 and room.room_id < 800 %}
-                <div class="col col-sm-2 room_box">
+                <div class="col col-sm-1 room_box">
                     {{ room.room_id }}<br />
                     [{{ room.room_grade_id }}]<br />
                         {% if  room.room_stay == 1%}
@@ -116,7 +116,7 @@
                         {% else %}
                         [⚪️] <!--객실 공실 상태-->
                         {% endif %}
-                        {% if  room_check_housekeeping == 1%}
+                        {% if  room.room_check_housekeeping == 1%}
                         [⭕️] <!--객실 하우스키핑 완료 상태-->
                         {% else %}
                         [❌] <!--객실 하우스키핑 필요 상태-->
@@ -134,7 +134,7 @@
                                 <br/>
         {% for room in room_list %}
                 {% if room.room_id > 600 and room.room_id < 700 %}
-                <div class="col col-sm-2 room_box">
+                <div class="col col-sm-1 room_box">
                     {{ room.room_id }}<br />
                     [{{ room.room_grade_id }}]<br />
                         {% if  room.room_stay == 1%}
@@ -142,7 +142,7 @@
                         {% else %}
                         [⚪️] <!--객실 공실 상태-->
                         {% endif %}
-                        {% if  room_check_housekeeping == 1%}
+                        {% if  room.room_check_housekeeping == 1%}
                         [⭕️] <!--객실 하우스키핑 완료 상태-->
                         {% else %}
                         [❌] <!--객실 하우스키핑 필요 상태-->
@@ -160,7 +160,7 @@
                                 <br/>
         {% for room in room_list %}
                 {% if room.room_id > 500 and room.room_id < 600 %}
-                <div class="col col-sm-2 room_box">
+                <div class="col col-sm-1 room_box">
                     {{ room.room_id }}<br />
                     [{{ room.room_grade_id }}]<br />
                         {% if  room.room_stay == 1%}
@@ -168,7 +168,7 @@
                         {% else %}
                         [⚪️] <!--객실 공실 상태-->
                         {% endif %}
-                        {% if  room_check_housekeeping == 1%}
+                        {% if  room.room_check_housekeeping == 1%}
                         [⭕️] <!--객실 하우스키핑 완료 상태-->
                         {% else %}
                         [❌] <!--객실 하우스키핑 필요 상태-->
