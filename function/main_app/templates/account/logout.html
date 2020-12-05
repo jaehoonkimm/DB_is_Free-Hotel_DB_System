@@ -5,16 +5,43 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
+
+<style>
+
+  h1 {
+    margin-top: 150px;
+  }
+  
+  h6 {
+    color: gray;
+  }
+
+  form {
+    margin-top: 200px;
+  }
+
+  #sign_out_button {
+    margin: auto;
+  }
+
+</style>
+
 <h1>{% trans "Sign Out" %}</h1>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<h6>{% trans 'Are you sure you want to sign out?' %}</h6>
 
 <form method="post" action="{% url 'account_logout' %}">
   {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% if redirect_field_value %} 
   {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
+
+  <!--Sign Out Button-->
+  <div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4" id="sign_out_button"> <!--문제) sm보다 작아지는 경우 화면의 width와 로그인 버튼의 width가 일치함.-->
+      <button type="submit" class="btn btn-dark btn-lg btn-block" style="margin:auto;">{% trans "Sign Out" %}</button>
+    </div>
+  </div>
+
 </form>
 
 
