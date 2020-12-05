@@ -9,14 +9,38 @@
 
 {% block contents %}
 
+
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">출근 확인</h3>
+    <br>
     {% csrf_token %}
-    {{ form.as_p }}
+    <p>
+        <label for="id_office_check_out_timestamp" style="font-weight: bold;">출근 시간&nbsp;:&nbsp;&nbsp;</label>
+        <input type="text" name="office_check_out_timestamp" required id="id_office_check_out_timestamp"></p>
+    <p style="margin-bottom: 80px;"><label for="id_employee" style="font-weight: bold;">직원 이름&nbsp;:&nbsp;&nbsp;</label>
+        <select name="employee" required id="id_employee" style="height: 30px; width: 190px;">
+            <option value="" selected>---------</option>
+
+            <option value="1">Employees object (1)</option>
+
+            <option value="2">Employees object (2)</option>
+
+        </select></p>
 
     <h3 class="my-3 border-bottom pb-2">퇴근 확인</h3>
+    <br>
     {% csrf_token %}
-    {{ form.as_p }}
+    <p><label for="id_office_check_out_timestamp" style="font-weight: bold;">퇴근 시간&nbsp;:&nbsp;&nbsp;</label> 
+        <input type="text" name="office_check_out_timestamp" required id="id_office_check_out_timestamp"></p>
+    <p><label for="id_employee" style="font-weight: bold;">직원 이름&nbsp;:&nbsp;&nbsp;</label> 
+        <select name="employee" required id="id_employee" style="height: 30px; width: 190px;">
+            <option value="" selected>---------</option>
+
+            <option value="1">Employees object (1)</option>
+
+            <option value="2">Employees object (2)</option>
+
+        </select></p>
 </div>
 
 {% endblock contents %}
