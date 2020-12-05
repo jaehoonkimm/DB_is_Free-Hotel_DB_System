@@ -6,41 +6,156 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
+<style>
 
-<h1>{% trans "Sign In" %}</h1>
+    h1 {
+      margin-top: 15px;
+    }
+
+    h6 {
+      margin-bottom: 30px;
+    }
+
+    form {
+      column-count: 2;
+      margin-top: 115px;
+    }
+
+    #ID {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 15px;
+    }
+
+    #PW {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 15px;
+    }
+
+    #remember_box {
+      margin-bottom: 30px;
+    }
+
+    #sign_in_button {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+    }
+
+    #Plus_function {
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    #link_su {
+      color: gray;
+    }
+
+    #link_su:hover {
+      color: blueviolet;
+    }
+
+    #reset_PW {
+      color: gray;
+    }
+
+    #reset_PW:hover {
+      color: blueviolet;
+    }
+
+    #social_login {
+      margin: auto;
+      align-content: center;
+    }
+
+    #Google_Sign_In {
+      margin-bottom: 30px;
+    }
+
+    #Naver_Sign_In {
+      margin-bottom: 30px;
+    }
+
+    #Facebook_Sign_In {
+      margin-bottom: 30px;
+    }
+
+    #Kakao_Sign_In {
+    }
+
+</style>
+
+<h1><br>{% trans "Sign In" %}</h1>
+<h6>Welcome to Hotel DB</h6>
 
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-<div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
-</div>
 
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
+  <!-- ID Form -->
+  <div class="row" id="login_form">
+    <div class="col-sm-8 col-md-6 col-lg-6" id="ID"> 
+      <input type="text" class="form-control" name="login" placeholder="아이디" autocomplete="username" maxlength="150" required id="id_login">
+    </div>
+  </div>
 
+  <!-- Password Form -->
+  <div class="row" id="login_form">
+    <div class="col-sm-8 col-md-8 col-lg-6" id="PW"> 
+      <input type="password" class="form-control" name="password" placeholder="비밀번호" autocomplete="current-password" required id="id_password">
+    </div>
+  </div>
+
+  <!--ID remember-->
+  <p id="remember_box"><label for="id_remember">아이디 저장하기</label> <input type="checkbox" name="remember" id="id_remember"></p>
+
+  {% if redirect_field_value %}
+    
+  {% endif %}
+
+  <!--Sign In Button-->
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-8" id="sign_in_button"> <!--문제) sm보다 작아지는 경우 화면의 width와 로그인 버튼의 width가 일치함.-->
+      <button type="submit" class="btn btn-dark btn-lg btn-block" style="margin:auto;">{% trans "Sign In" %}</button>
+    </div>
+  </div>
+
+  <!-- Reset Password -->
+  <div id="Plus_function">
+    <a class="button secondaryAction" href="{% url 'account_reset_password' %}" id="reset_PW">비밀번호를 잊어버리셨나요?</a> / 
+    <a href="{{ signup_url }}" id="link_su">회원가입</a>
+  </div>
+
+  <div class ="form-group" id= "social_login">
+    <!-- Google Sign In -->
+    <div class="socialaccount_ballot col-sm-10 col-md-15 col-lg-20" id="Google_Sign_In">
+      <a class="btn btn-outline-secondary btn-lg btn-block" href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=256529224806-182ll6sbit6s78fk4e8mse6nji6jphrr.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile&response_type=code&state=Idu4H14KuZVP&flowName=GeneralOAuthFlow"> Google 로그인</a>
+    </div>
+
+    <!--하단 부분은 시간이 있을 때 추가적으로 넣으면 하는 부분 / 각 소셜 API를 django에 추가해줘야해서 시간 소모 예정.-->
+    <!-- Naver Sign In -->
+    <div class="socialaccount_ballot col-sm-10 col-md-15 col-lg-20" id="Naver_Sign_In">
+      <a class="btn btn-outline-success btn-lg btn-block" href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=256529224806-182ll6sbit6s78fk4e8mse6nji6jphrr.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile&response_type=code&state=Idu4H14KuZVP&flowName=GeneralOAuthFlow"> Naver 로그인</a>
+    </div>
+
+    <!-- Facebook Sign In -->
+    <div class="socialaccount_ballot col-sm-10 col-md-15 col-lg-20" id="Facebook_Sign_In">
+      <a class="btn btn-outline-primary btn-lg btn-block" href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=256529224806-182ll6sbit6s78fk4e8mse6nji6jphrr.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile&response_type=code&state=Idu4H14KuZVP&flowName=GeneralOAuthFlow"> Facebook 로그인</a>
+    </div>
+
+    <!-- Kakao Sign In -->
+    <div class="socialaccount_ballot col-sm-10 col-md-15 col-lg-20" id="Kakao_Sign_In">
+      <a class="btn btn-outline-warning btn-lg btn-block" href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=256529224806-182ll6sbit6s78fk4e8mse6nji6jphrr.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile&response_type=code&state=Idu4H14KuZVP&flowName=GeneralOAuthFlow"> KaKao 로그인</a>
+    </div>  
+  </div>
+
+</form>
 {% endblock %}
