@@ -31,7 +31,6 @@ urlpatterns = [
     path('employeeattendance/', views.employee_attendance, name="employee_attendance"),
     path('realtimeclaims/', views.realtime_claims, name="realtime_claims"),
     path('parkinglot/', views.parking_lot, name="parking_lot"),
-    path('parkinglot/<int:pid>/', views.parking_lot_detail, name="parking_lot_detail"),
     path('accounts/', include('allauth.urls')),
     path('create_reservation_calendar/', views.create_reservation_calendar, name='create_reservation_calendar'),
     path('delete_reservation_calendar/', views.delete_reservation_calendar, name='delete_reservation_calendar'),
