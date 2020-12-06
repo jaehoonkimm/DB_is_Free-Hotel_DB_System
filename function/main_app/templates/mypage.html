@@ -12,32 +12,63 @@
 
 {% block contents %}
 <div class="para"></div>
-    <h3 class="my-3 border-bottom pb-2">TASK LIST</h3>
-
     <h5 class="my-3 border-bottom pb-2">하우스 키핑</h5>
     <table class="table table-striped">
         <thead>
             <tr>
                 <td><B>객실 번호</B></td>
-                <td><B>업무</B></td>
-                <td><B>업무</B></td>
+                <!-- <td><B>업무</B></td> -->
+                <!-- <td><B>업무</B></td> -->
             </tr>
             </thead>
     <tbody>
+       
         {% for HouseKeepingTaskList in your_task %}
+        {% if not HouseKeepingTaskList.house_keeping_task_end_time %}
         <tr>
             <td>
-                    {{ HouseKeepingTaskList.room_id }} 호 <br/>     
+                    {{ HouseKeepingTaskList.room_id }} 호 <br/>
             </td>
             <div></div>
-            <td> <a href="{% url 'start_time' %}" class="btn btn-dark">시작하기</a></td>
+            <!-- <td> <a href="{% url 'start_time' %}" class="btn btn-dark">시작하기</a></td> -->
 
-            <td> <a href="{% url 'end_time' %}" class="btn btn-dark">마감하기</a></td>
+            <!-- <td> <a href="{% url 'end_time' %}" class="btn btn-dark">마감하기</a></td> -->
         </tr>
+        {% endif %}
         {% endfor %}
     </tbody>
     </table>
     <br>
+
+
+    <h5 class="my-3 border-bottom pb-2">실시간 클레임</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td><B>객실 번호</B></td>
+                <td><B>내용</B></td>
+                <!-- <td><B>업무</B></td> -->
+                <!-- <td><B>업무</B></td> -->
+            </tr>
+            </thead>
+    <tbody>
+       
+        {% for rc in rc_list %}
+            {% if not rc.claim_task_end_time %}
+            <tr>
+                <td>
+                        {{ rc.check_in.room_id }} 호 <br/>
+                </td>
+                <div></div>
+                <td> {{ rc.realtime_clain_content }} </td>
+                <!-- <td> <a href="{% url 'start_time' %}" class="btn btn-dark">시작하기</a></td> -->
+
+                <!-- <td> <a href="{% url 'end_time' %}" class="btn btn-dark">마감하기</a></td> -->
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+    </table>
 
    
 {% endblock contents %}

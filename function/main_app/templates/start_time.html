@@ -14,18 +14,16 @@
 <div class="para">
     <h3 class="my-3 border-bottom pb-2">시작시간 기록</h3>
     <br>
-    {% for HouseKeepingTaskList in hk_list  %}
-    <tr>
-        <td>
-                {{ HouseKeepingTaskList.room_id }} 호 <br/>     
-        </td>
-        {% endfor %}
+
     <form method="post" class="post-form my-3"> 
     {% csrf_token %}
     {{ form.as_p }}
-
+    <input type="button" value="뒤로가기" class="btn btn-dark" onClick="history.go(-1)">
     <button type="submit" class="btn btn-dark">입력</button>
+    
     </form>
+
 </div>
-   
+
+
 {% endblock contents %}
