@@ -1,3 +1,8 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -11,9 +16,16 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap">
 
-    {% block title %}
-    {% endblock title %}
+    <title>Employee Status Page</title>
+
     <style>
+        .room_box {
+            border: 3px solid cadetblue;
+            font-size: 20px;
+            font-weight: bolder;
+            margin-right: 2px;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: rgb(255, 255, 253);
@@ -38,7 +50,6 @@
             font-family: 'Roboto', sans-serif;
             width: 100%;
             height: 100px;
-            position: absolute;
             bottom: 0;
             background: rgb(90, 83, 74);
             text-align: center;
@@ -106,9 +117,7 @@
                     style="background-color: rgb(219, 204, 184);">마이 페이지</a>
                 <a href="/employeeattendance/" class="list-group-item list-group-item-action"
                     style="background-color: rgb(219, 204, 184);">직원 출퇴근</a>
-                <a href="#" class="list-group-item list-group-item-action"
-                    style="background-color: rgb(219, 204, 184);">직원 업무 현황</a>
-                <a href="/employee_status/" class="list-group-item list-group-item-action"
+                <a href="/emtaskassign/" class="list-group-item list-group-item-action"
                     style="background-color: rgb(219, 204, 184);">하우스 키핑</a>
                 <a href="/realtimeclaims/" class="list-group-item list-group-item-action"
                     style="background-color: rgb(219, 204, 184);">실시간 업무 배정</a>
@@ -118,6 +127,8 @@
                     style="background-color: rgb(219, 204, 184);">객실 상태</a>
                 <a href="/parkinglot/" class="list-group-item list-group-item-action"
                     style="background-color: rgb(219, 204, 184);">주차 페이지</a>
+                <a href="#" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">생겨날 메뉴</a>
                 <a href="/admin/" class="list-group-item list-group-item-action"
                     style="background-color: rgb(219, 204, 184);">admin 페이지</a>
             </div>
@@ -152,8 +163,43 @@
                     </ul>
                 </div>
             </nav>
-            {% block contents %}
-            {% endblock contents %}
+
+            <div class="para" style="margin-top: 25px;">
+                <h3 class="my-3 border-bottom pb-2">직원 현황</h3>
+
+                <div class="my-3" style="border: 5px solid white; 
+                                margin: auto; 
+                                display: flex; flex-direction: row;
+                                width: 95%; height: auto;">
+                    <br />
+                    {% for employee in employee_list %}
+                    <div class="col col-sm-2 room_box">
+                        직원 ID - {{ employee.employee_id }} <br />
+                        {{ employee.employee_last_name }}
+                        {{ employee.employee_first_name }} <br />
+                        {{ employee.employee_gender }} <br />
+                        {{ employee.team.department.department_name }} <br />
+                        {{ employee.team.team_name }} <br /><br />
+                        [HouseKeeping중] <br />
+                            {% for hk in housekeeping %}
+                                {% if hk.employee_id == employee.employee_id and not hk.house_keeping_task_end_time %}
+                                    <{{ hk.room_id }}>번 방 <br />
+                                {% endif %}
+                            {% endfor %}
+                        <br />
+                        [Claim처리중] <br />
+                            {% for rc in realtimeclaim %}
+                                {% if rc.employee_id == employee.employee_id and not rc.claim_task_end_time %}
+                                    <{{ rc.check_in.room.room_id }}>번 방 <br />
+                                    {{ rc.realtime_clain_content }} <br />
+                                {% endif %}
+                            {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
         </div>
         <!-- /#page-content-wrapper -->
     </div>
