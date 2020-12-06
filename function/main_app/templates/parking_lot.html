@@ -1,61 +1,264 @@
-{% extends "base2.html" %}
 {% load static %}
 {% load socialaccount %}
 {% providers_media_js %}
+<!DOCTYPE html>
+<html lang="ko">
 
-{% block title %}
-<title>Parking Lot Page</title>
-{% endblock title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap">
 
-{% block contents %}
+    <title>Parking Lot Page</title>
+    <style>
+        .left-box {
 
-<div class="para">
-<h3 class="my-3 border-bottom pb-2">주차 페이지</h3>
-<br>
+            float: left;
+            width: 50%;
+        }
 
-<style>
-    .left-box {
-      
-      float: left;
-      width: 50%;
-    }
-    .right-box {
-      
-      float: right;
-      width: 50%;
-    }
+        .right-box {
+
+            float: right;
+            width: 50%;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: rgb(255, 255, 253);
+            width: 100%;
+            height: 100%;
+            text-align: center;
+
+        }
+
+        .para {
+            margin-top: 100px;
+        }
+
+        .navbar {
+            height: 80px;
+            font-family: 'Roboto', sans-serif;
+            background-color: rgb(219, 204, 184);
+            font-size: larger;
+        }
+
+        .footer {
+            font-family: 'Roboto', sans-serif;
+            width: 100%;
+            height: 100px;
+            bottom: 0;
+            background: rgb(90, 83, 74);
+            text-align: center;
+            color: black;
+        }
+
+        #wrapper {
+            overflow-x: hidden;
+        }
+
+        #sidebar-wrapper {
+            min-height: 100vh;
+            margin-left: -15rem;
+            -webkit-transition: margin .25s ease-out;
+            -moz-transition: margin .25s ease-out;
+            -o-transition: margin .25s ease-out;
+            transition: margin .25s ease-out;
+            font-family: 'Roboto', sans-serif;
+            background-color: rgb(219, 204, 184);
+        }
+
+        #sidebar-wrapper .sidebar-heading {
+            padding: 0.875rem 1.25rem;
+            font-size: 1.2rem;
+            background-color: rgb(219, 204, 184);
+        }
+
+        #sidebar-wrapper .list-group {
+            width: 15rem;
+        }
+
+        #page-content-wrapper {
+            min-width: 100vw;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            margin-left: 0;
+        }
+
+        @media (min-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+
+            #page-content-wrapper {
+                min-width: 0;
+                width: 100%;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: -15rem;
+            }
+        }
     </style>
+</head>
 
-    <div class='left-box'><h5>직원 차량 확인 필드 </h5><hr width="100%"><br>
+<body>
+    <div class="d-flex" id="wrapper">
 
-        {% if form1 %}
-            <ul>
-                {% for EmployeesParkingSystem in form1 %}
-                    <li><h6>{{ EmployeesParkingSystem.car_plate_number }}</h6></li>
-                    직원 이름 : {{ EmployeesParkingSystem.employee.employee_first_name }}<br>
-                    주차 위치 : {{ EmployeesParkingSystem.parking_location }}<br>
-                    입차 시각 : {{ EmployeesParkingSystem.parking_in_timestamp }}<br>
-                    <hr width="100%">
-                {% endfor %}
-            </ul>
-        {% endif %}
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading" style="font-weight: bolder;">직원 전용 메뉴</div>
+            <div class="list-group list-group-flush">
+                <a href="/mypage/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">마이 페이지</a>
+                <a href="/employeeattendance/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">직원 출퇴근</a>
+                <a href="/employee_status/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">직원 업무 현황</a>
+                <a href="/emtaskassign/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">하우스 키핑</a>
+                <a href="/realtimeclaims/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">실시간 업무 배정</a>
+                <a href="/create_reservation_calendar" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">예약석 초기화</a>
+                <a href="/room_status/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">객실 상태</a>
+                <a href="/parkinglot/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">주차 페이지</a>
+                <a href="/admin/" class="list-group-item list-group-item-action"
+                    style="background-color: rgb(219, 204, 184);">admin 페이지</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-md navbar-light">
+
+                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item "><button class="btn" id="menu-toggle"
+                                style="background-color:rgb(151, 139, 124);">
+                                <p style="display: inline; font-size: small; color: black; font-weight: bolder;">직원 메뉴
+                                </p>
+                            </button></li>
+                    </ul>
+                </div>
+                <div class="mx-auto order-0">
+                    <a class="navbar-brand mx-auto" href="http://127.0.0.1:8000/"
+                        style="font-weight: bold; font-size: larger; font-family: 'Castoro', serif;">DB HOTEL</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item "><a class="nav-link" href="/accounts/logout"
+                                style="font-size: small;">로그아웃</a></li>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="para">
+                <h3 class="my-3 border-bottom pb-2">주차 페이지</h3>
+                <br>
+                
+                <style>
+                    .left-box {
+                      
+                      float: left;
+                      width: 50%;
+                    }
+                    .right-box {
+                      
+                      float: right;
+                      width: 50%;
+                    }
+                    </style>
+                
+                    <div class='left-box'><h5>직원 차량 확인 필드 </h5><hr width="100%"><br>
+                
+                        {% if form1 %}
+                            <ul>
+                                {% for EmployeesParkingSystem in form1 %}
+                                    <li><h6>{{ EmployeesParkingSystem.car_plate_number }}</h6></li>
+                                    직원 이름 : {{ EmployeesParkingSystem.employee.employee_first_name }}<br>
+                                    주차 위치 : {{ EmployeesParkingSystem.parking_location }}<br>
+                                    입차 시각 : {{ EmployeesParkingSystem.parking_in_timestamp }}<br>
+                                    <hr width="100%">
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+
+                <div class='right-box'><h5>고객 차량 확인 필드 </h5><hr width="100%" hr width="1" size="500"><br>
+
+                    {% if form2 %}
+                        <ul>
+                            {% for CustomerParkingSystem in form2 %}
+                                <li><h6>{{ CustomerParkingSystem.car_plate_number }}</h6></li>
+                                고객 관리 번호 : {{ CustomerParkingSystem.check_in }}<br>
+                                주차 위치 : {{ CustomerParkingSystem.parking_location }}<br>
+                                입차 시각 : {{ CustomerParkingSystem.parking_in_timestamp }}<br>
+                                <hr width="100%">
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
     </div>
 
 
+    <footer class="footer">
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2" style="text-align: center; font-weight: bold; font-family: 'Castoro', serif;">
+                    DB<br>HOTEL</div>
+                <div class="col-sm-3" style="font-weight: bold; font-size: small;">
+                    <p>서울DB호텔 T.02-1234-1234</p>
+                    <p>제주DB호텔 T.064-1234-1234</p>
+                </div>
+                <div class="col-sm-1" style="font-weight: bold; font-size: small; color: rgb(32, 31, 29);">
+                    <p>고객센터</p>
+                    <p>이용약관</p>
+                </div>
+                <div class="col-sm-2" style="font-weight: bold; font-size: small; color: rgb(32, 31, 29);">
+                    <p>이메일무단수집금지</p>
+                    <p>개인정보처리방침</p>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-outline-dark btn-social mx-1" href="https://www.facebook.com/"><i
+                            class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-dark btn-social mx-1" href="https://www.instagram.com/"><i
+                            class="fab fa-fw fa-instagram"></i></a>
+                    <a class="btn btn-outline-dark btn-social mx-1"
+                        href="https://github.com/jaehoonkimm/DB_is_Free-Hotel_DB_System"><i
+                            class="fab fa-fw fa-git"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
 
-    <div class='right-box'><h5>고객 차량 확인 필드 </h5><hr width="100%" hr width="1" size="500"><br>
-
-        {% if form2 %}
-            <ul>
-                {% for CustomerParkingSystem in form2 %}
-                    <li><h6>{{ CustomerParkingSystem.car_plate_number }}</h6></li>
-                    고객 관리 번호 : {{ CustomerParkingSystem.check_in }}<br>
-                    주차 위치 : {{ CustomerParkingSystem.parking_location }}<br>
-                    입차 시각 : {{ CustomerParkingSystem.parking_in_timestamp }}<br>
-                    <hr width="100%">
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-</div>
-{% endblock contents %}
+</html>
