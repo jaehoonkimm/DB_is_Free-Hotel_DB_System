@@ -138,9 +138,27 @@ def em_task_assign(request):
 
 #직원 출퇴근 기능
 def employee_attendance(request):
-    form1 = EmployeeattendancecheckonForm()
-    form2 = EmployeeattendancecheckoutForm()
-    return render(request, 'employee_attendance.html', {'form1':form1, 'form2':form2})
+    if request.method == "POST":
+        form1 = EmployeeattendancecheckonForm(request.POST)
+        if form1.is_valid():
+            OfficeCheckOn = form1.save(commit=False)
+            office_check_on_timestamp = timezone.now()
+            OfficeCheckOn.save()
+            return redirect('employee_attendance')
+    elif request.method == "POST":
+        form2 = EmployeeattendancecheckoutForm(request.POST)
+        if form2.is_valid():
+            OfficeCheckOut = form2.save(commit=False)
+            OfficeCheckOut.save()
+            return redirect('employee_attendance')
+    else:
+        form1 = EmployeeattendancecheckonForm()
+        form2 = EmployeeattendancecheckoutForm()
+    context = {"form1": form1, "form2" : form2}
+    return render(request, 'employee_attendance.html', context)
+    #form1 = EmployeeattendancecheckonForm()
+    #form2 = EmployeeattendancecheckoutForm()
+    #return render(request, 'employee_attendance.html', {'form1':form1, 'form2':form2})
 
 
 
@@ -166,12 +184,6 @@ def parking_lot(request):
     context = {'form1' : form1, 'form2' : form2}
     return render(request, 'parking_lot.html', context)
 
-
-def parking_lot_detail(request, pid):
-    form = EmployeesParkingSystem.objects.get(pk=pid)
-    form = EmployeesParkingSystem.objects.order_by('car_plate_number')
-    context = {'form': form}
-    return render(request, 'parking_lot_detail.html', context)
 
 #직원 마이페이지 - 업무 불러오기
 def em_mytask(request):
