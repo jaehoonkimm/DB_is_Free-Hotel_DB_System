@@ -25,14 +25,17 @@
             </thead>
 
     <tbody>
-        {% for RealtimeClaim in your_task %}
+        {% for HouseKeepingTaskList in your_task %}
         <tr>
-            <td> {{ HouseKeepingTaskList.room }}호 </td>
+            <td>
+                    {{ HouseKeepingTaskList.room_id }} 호 <br/>     
+            </td>
             <td> <button type="submit" class="btn btn-dark">시작하기</button></td>
             <td> <button type="submit" class="btn btn-dark">마감하기</button></td>
         </tr>
         {% endfor %}
     </tbody>
+ 
     
 </div>
 

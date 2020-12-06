@@ -195,7 +195,9 @@ def parking_lot(request):
 #직원 마이페이지 - 업무 불러오기
 def em_mytask(request):
     log_id = request.user.id
-    your_task = RealtimeClaim.objects.all().values()
-    context = {'your_task':your_task}
-    return render(request, 'mypage.html', context)
+    your_task = HouseKeepingTaskList.objects.all()
+    all_em =  Employees.objects.all().values()
+    context1 = {'your_task':your_task}
+    context2 = {'all_em':all_em}
+    return render(request, 'mypage.html', context1, context2)
 
