@@ -197,7 +197,7 @@ class Mileage(models.Model):
 class OfficeCheckOn(models.Model):
     office_check_on_id = models.AutoField(db_column='OFFICE_CHECK_ON_ID', primary_key=True)  # Field name made lowercase.
     employee = models.ForeignKey(Employees, models.DO_NOTHING, db_column='EMPLOYEE_ID')  # Field name made lowercase.
-    office_check_on_timestamp = models.DateTimeField(db_column='OFFICE_CHECK_ON_TIMESTAMP')  # Field name made lowercase.
+    office_check_on_timestamp = models.DateTimeField(db_column='OFFICE_CHECK_ON_TIMESTAMP', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -207,7 +207,7 @@ class OfficeCheckOn(models.Model):
 class OfficeCheckOut(models.Model):
     office_check_out_id = models.AutoField(db_column='OFFICE_CHECK_OUT_ID', primary_key=True)  # Field name made lowercase.
     employee = models.ForeignKey(Employees, models.DO_NOTHING, db_column='EMPLOYEE_ID')  # Field name made lowercase.
-    office_check_out_timestamp = models.DateTimeField(db_column='OFFICE_CHECK_OUT_TIMESTAMP')  # Field name made lowercase.
+    office_check_out_timestamp = models.DateTimeField(db_column='OFFICE_CHECK_OUT_TIMESTAMP', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False

@@ -9,13 +9,6 @@
 
 {% block contents %}
 주차 페이지
-<h3 class="my-3 border-bottom pb-2">고객 주차 서비스</h3>
-    {% csrf_token %}
-    {{ form.as_p }}
-
-<h3 class="my-3 border-bottom pb-2">직원 주차 서비스</h3>
-    {% csrf_token %}
-    {{ form.as_p }}   
 
 <h3 class="my-3 border-bottom pb-2">확인 필드</h3>
 <style>
@@ -34,7 +27,11 @@
         {% if form1 %}
             <ul>
                 {% for EmployeesParkingSystem in form1 %}
-                    <li><a href="{% url 'parking_lot_detail' EmployeesParkingSystem.employees_parking_history_id  %}">{{ EmployeesParkingSystem.car_plate_number }}</a></li>
+                    <li>{{ EmployeesParkingSystem.car_plate_number }}</li>
+                    employee = {{ EmployeesParkingSystem.employee }}<br>
+                    car_plate_number = {{ EmployeesParkingSystem.car_plate_number }}<br>
+                    parking_location = {{ EmployeesParkingSystem.parking_location }}<br>
+                    parking_in_timestamp = {{ EmployeesParkingSystem.parking_in_timestamp }}<br>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -45,7 +42,11 @@
         {% if form2 %}
             <ul>
                 {% for CustomerParkingSystem in form2 %}
-                    <li><a href="{{ CustomerParkingSystem.car_plate_number }}/">{{ CustomerParkingSystem.car_plate_number }}</a></li>
+                    <li>{{ CustomerParkingSystem.car_plate_number }}</li>
+                    check_in = {{ CustomerParkingSystem.check_in }}<br>
+                    car_plate_number = {{ CustomerParkingSystem.car_plate_number }}<br>
+                    parking_location = {{ CustomerParkingSystem.parking_location }}<br>
+                    parking_in_timestamp = {{ CustomerParkingSystem.parking_in_timestamp }}<br>
                 {% endfor %}
             </ul>
         {% endif %}
