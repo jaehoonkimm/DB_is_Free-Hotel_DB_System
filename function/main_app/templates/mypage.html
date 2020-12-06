@@ -12,9 +12,9 @@
 
 {% block contents %}
 <div class="para"></div>
-    <h3 class="my-3 border-bottom pb-2"> MY PAGE</h3>
+    <h3 class="my-3 border-bottom pb-2">TASK LIST</h3>
 
-    <h5 class="my-3 border-bottom pb-2">배정 받은 업무</h5>
+    <h5 class="my-3 border-bottom pb-2">하우스 키핑</h5>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -24,16 +24,20 @@
             </tr>
             </thead>
     <tbody>
-        {% for RealtimeClaim in your_task %}
+        {% for HouseKeepingTaskList in your_task %}
         <tr>
-            <td> {{ HouseKeepingTaskList.room }}호 </td>
-            <td> <button type="submit" class="btn btn-dark">시작하기</button></td>
-            <td> <button type="submit" class="btn btn-dark">마감하기</button></td>
+            <td>
+                    {{ HouseKeepingTaskList.room_id }} 호 <br/>     
+            </td>
+            <div></div>
+            <td> <a href="{% url 'start_time' %}" class="btn btn-dark">시작하기</a></td>
+
+            <td> <a href="{% url 'end_time' %}" class="btn btn-dark">마감하기</a></td>
         </tr>
         {% endfor %}
     </tbody>
-</table>
-</div>
+    </table>
+    <br>
 
    
 {% endblock contents %}
