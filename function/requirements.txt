@@ -16,7 +16,6 @@ gunicorn==20.0.4
 html5lib==1.0.1
 icalendar==4.0.7
 mysqlclient==2.0.1
-navigator-updater==0.2.1
 PyMySQL==0.10.1
 requests==2.22.0
 requests-oauthlib==1.3.0
