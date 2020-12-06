@@ -22,6 +22,12 @@ def home(request):
     room_list = ReservationCalendar.objects.all().values()
     return render(request, 'index.html', {'reserv_day':reserv_day, 'room_list':room_list})
 
+def employee_status(request):
+    employee_status = Employees.objects.all()
+    housekeeping = HouseKeepingTaskList.objects.all()
+    RealtimeClaim_list = RealtimeClaim.objects.all()
+    return render(request, 'employee_status.html', {'employee_list':employee_status, 'housekeeping':housekeeping, 'realtimeclaim':RealtimeClaim_list})
+
 def room_status(request):
     room_status = RoomList.objects.all()
     return render(request, 'room_status.html', {'room_list':room_status})

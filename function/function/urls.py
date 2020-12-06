@@ -37,5 +37,6 @@ urlpatterns = [
     path('delete_reservation_calendar/', views.delete_reservation_calendar, name='delete_reservation_calendar'),
     path('room_status/', views.room_status, name='room_status'), 
     path('mypage/', views.em_mytask, name='em_mytask'), 
+    path('employee_status/', views.employee_status, name='employee_status'), 
 ]
 
