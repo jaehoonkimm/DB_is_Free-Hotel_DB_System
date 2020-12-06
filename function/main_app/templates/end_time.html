@@ -1,0 +1,26 @@
+{% extends "base2.html" %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+{% block title %}
+    <title>End Time-Check Page</title>
+{% endblock title %}
+
+
+{% block contents %}
+
+<div class="para">
+    <h3 class="my-3 border-bottom pb-2">마감시간 기록</h3>
+    <br>
+  
+    <form method="post" class="post-form my-3"> 
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-dark">입력</button>
+    </form>
+</div>
+   
+{% endblock contents %}
