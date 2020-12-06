@@ -7,6 +7,16 @@
  pip install django-suit
  pip install django-allauth
  pip install django-admin-rangefilter
+ 
+ # pymysql load 실패시, Project 폴더 내 __init__.py에 python library path 추가
+ import sys
+ path = "/usr/local/lib/python3.6/dist-packages
+ sys.path.insert(0, path)
+ 
+ # Ubuntu 환경에서 배포시, mysqlclient 업데이트를 위해 아래 install 실행 필요
+ apt-get install libmysqlclient-dev -y
+ pip install --upgrade mysqlclient
+ 
 ```
 ## 변경점 및 참고사항(수시로 업데이트)  
 #### django-admin-rangefilter 추가  
