@@ -31,9 +31,12 @@ class ReservationForm(forms.ModelForm):
                 ('RoomTypeInfo object (Executive Room)', '스위트 더블'),
         )
         widgets = {
-            'room_type_grade': forms.Select(choices=(ROOM_CHOICE), attrs={'class': 'form-control'}),
+            # 'room_type_grade': forms.Select(choices=ROOM_CHOICE),
             'reservation_start_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
             'reservation_end_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
+        }
+        fields_classes = {
+            'room_type_grade':ROOM_CHOICE
         }
 
 class EmTaskAssignForm(forms.ModelForm):

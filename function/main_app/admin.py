@@ -22,6 +22,10 @@ class ReservationAdmin(admin.ModelAdmin):
                 ('reservation_start_date', DateRangeFilter),
                 ('reservation_end_date', DateRangeFilter),)
     search_fields = []
+    def get_name(self, obj):
+        return obj.customer
+    get_name.admin_order_field = 'customer_id'
+    get_name.short_description = 'Customer Name'
 
 class ReservationCalendarAdmin(admin.ModelAdmin):
     list_display = ['reservation_calendar_id', 'day','room_grade', 'reservation_count']
