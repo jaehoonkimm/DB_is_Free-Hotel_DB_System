@@ -98,3 +98,15 @@ class ParkinglotForm(forms.ModelForm):
         model = EmployeesParkingSystem
         fields = ['employee', 'car_plate_number', 'parking_location', 'parking_in_timestamp'
                 ]
+
+class StartTimeForm(forms.ModelForm):
+    class Meta:
+        model = HouseKeepingTaskList
+        fields = ['house_keeping_task_start_time', 
+                ]
+
+class EndTimeForm(forms.ModelForm):
+    class Meta:
+        model = HouseKeepingTaskList
+        fields = ['house_keeping_task_end_time'
+                    ]

@@ -12,6 +12,8 @@ from .forms import RealTimeClaimsForm
 from .forms import EmployeeattendancecheckonForm
 from .forms import EmployeeattendancecheckoutForm
 from .forms import ParkinglotForm
+from .forms import StartTimeForm
+from .forms import EndTimeForm
 
 from django.utils import timezone
 now = timezone.localtime()
@@ -196,8 +198,34 @@ def parking_lot(request):
 def em_mytask(request):
     log_id = request.user.id
     your_task = HouseKeepingTaskList.objects.all()
+    rc_list = RealtimeClaim.objects.all()
     all_em =  Employees.objects.all().values()
     context1 = {'your_task':your_task}
-    context2 = {'all_em':all_em}
+    context2 = {'rc_list':rc_list}
     return render(request, 'mypage.html', context1, context2)
 
+#시작시간 기록 
+def start_time(request):
+    hk_list = HouseKeepingTaskList.objects.all()
+    if request.method == "POST":
+        form = StartTimeForm(request.POST)
+        if form.is_valid():
+            RealtimeClaim = form.save(commit=False)
+            RealtimeClaim.save()
+            return redirect('realtime_claims')
+    else:
+        form = StartTimeForm()
+    return render(request, 'start_time.html', {'form': form})
+
+#마감시간 기록
+def end_time(request):
+    hk_list = HouseKeepingTaskList.objects.all()
+    if request.method == "POST":
+        form = EndTimeForm(request.POST)
+        if form.is_valid():
+            RealtimeClaim = form.save(commit=False)
+            RealtimeClaim.save()
+            return redirect('realtime_claims')
+    else:
+        form = EndTimeForm()
+    return render(request, 'end_time.html', {'form': form})
