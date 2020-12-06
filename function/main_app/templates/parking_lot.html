@@ -111,6 +111,7 @@
 <body>
     <div class="d-flex" id="wrapper">
 
+
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <div class="sidebar-heading" style="font-weight: bolder;">직원 전용 메뉴</div>
@@ -136,6 +137,7 @@
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
+
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -168,34 +170,48 @@
             <div class="para">
                 <h3 class="my-3 border-bottom pb-2">주차 페이지</h3>
                 <br>
-                <div class='left-box'>
-                    <h5 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;직원 차량 확인</h5><br>
-                    {% if form1 %}
-                    <ul>
-                        {% for EmployeesParkingSystem in form1 %}
-                        <li>{{ EmployeesParkingSystem.car_plate_number }}</li>
-                        직원 이름 = {{ EmployeesParkingSystem.employee.employee_first_name }}<br>
-                        차량 번호 = {{ EmployeesParkingSystem.car_plate_number }}<br>
-                        주차 위치 = {{ EmployeesParkingSystem.parking_location }}<br>
-                        입차 시각= {{ EmployeesParkingSystem.parking_in_timestamp }}<br><br>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </div>
+                
+                <style>
+                    .left-box {
+                      
+                      float: left;
+                      width: 50%;
+                    }
+                    .right-box {
+                      
+                      float: right;
+                      width: 50%;
+                    }
+                    </style>
+                
+                    <div class='left-box'><h5>직원 차량 확인 필드 </h5><hr width="100%"><br>
+                
+                        {% if form1 %}
+                            <ul>
+                                {% for EmployeesParkingSystem in form1 %}
+                                    <li><h6>{{ EmployeesParkingSystem.car_plate_number }}</h6></li>
+                                    직원 이름 : {{ EmployeesParkingSystem.employee.employee_first_name }}<br>
+                                    주차 위치 : {{ EmployeesParkingSystem.parking_location }}<br>
+                                    입차 시각 : {{ EmployeesParkingSystem.parking_in_timestamp }}<br>
+                                    <hr width="100%">
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
 
 
-                <div class='right-box'>
-                    <h5 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;고객 차량 확인</h5><br>
+                <div class='right-box'><h5>고객 차량 확인 필드 </h5><hr width="100%" hr width="1" size="500"><br>
+
                     {% if form2 %}
-                    <ul>
-                        {% for CustomerParkingSystem in form2 %}
-                        <li>{{ CustomerParkingSystem.car_plate_number }}</li>
-                        고객 관리 번호 = {{ CustomerParkingSystem.check_in }}<br>
-                        차량 번호 = {{ CustomerParkingSystem.car_plate_number }}<br>
-                        주차 위치 = {{ CustomerParkingSystem.parking_location }}<br>
-                        입차 시각 = {{ CustomerParkingSystem.parking_in_timestamp }}<br><br>
-                        {% endfor %}
-                    </ul>
+                        <ul>
+                            {% for CustomerParkingSystem in form2 %}
+                                <li><h6>{{ CustomerParkingSystem.car_plate_number }}</h6></li>
+                                고객 관리 번호 : {{ CustomerParkingSystem.check_in }}<br>
+                                주차 위치 : {{ CustomerParkingSystem.parking_location }}<br>
+                                입차 시각 : {{ CustomerParkingSystem.parking_in_timestamp }}<br>
+                                <hr width="100%">
+                            {% endfor %}
+                        </ul>
                     {% endif %}
                 </div>
             </div>
