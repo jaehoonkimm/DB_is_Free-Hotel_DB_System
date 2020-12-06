@@ -8,9 +8,9 @@
 {% endblock title %}
 
 {% block contents %}
-주차 페이지
-
-<h3 class="my-3 border-bottom pb-2">확인 필드</h3>
+<div class="para">
+<h3 class="my-3 border-bottom pb-2">주차 페이지</h3>
+<br>
 <style>
     .left-box {
       
@@ -23,7 +23,7 @@
       width: 50%;
     }
     </style>
-    <div class='left-box'><h5>직원 차량 확인 필드 </h5><br>
+    <div class='left-box'><h5 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;직원 차량 확인</h5><br>
         {% if form1 %}
             <ul>
                 {% for EmployeesParkingSystem in form1 %}
@@ -38,7 +38,7 @@
     </div>
 
 
-    <div class='right-box'><h5>고객 차량 확인 필드 </h5><br>
+    <div class='right-box'><h5 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;고객 차량 확인</h5><br>
         {% if form2 %}
             <ul>
                 {% for CustomerParkingSystem in form2 %}
@@ -51,5 +51,5 @@
             </ul>
         {% endif %}
     </div>
-
+</div>
 {% endblock contents %}
