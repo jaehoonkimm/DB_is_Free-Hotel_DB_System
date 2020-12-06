@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
 
 from django.contrib import auth
 from .models import *
+
+#from django.models import Q
 
 from .forms import ReservationForm
 from .forms import EmTaskAssignForm
@@ -156,6 +157,6 @@ def realtime_claims(request):
 #직원 마이페이지 - 업무 불러오기
 def em_mytask(request):
     log_id = request.user.id
-    your_task = RealtimeClaim.objects.all()
+    your_task = RealtimeClaim.objects.all().values()
     context = {'your_task':your_task}
     return render(request, 'mypage.html', context)

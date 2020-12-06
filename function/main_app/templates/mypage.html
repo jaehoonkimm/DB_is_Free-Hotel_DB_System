@@ -18,20 +18,18 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <td><B>업무</B></td>
-                <td><B>추가사항</B></td>
                 <td><B>객실 번호</B></td>
-                <td><B>업무 시간기록</B></td>
+                <td><B>업무</B></td>
+                <td><B>업무</B></td>
             </tr>
             </thead>
 
     <tbody>
         {% for RealtimeClaim in your_task %}
         <tr>
-            <td> 내용{{ realtimeclaim.realtime_clain_content }}</td>
-            <td> { realtimeclaim.claim_note }} </td>
-            <td> {{ realtimeclaim.check_in }}호 </td>
+            <td> {{ HouseKeepingTaskList.room }}호 </td>
             <td> <button type="submit" class="btn btn-dark">시작하기</button></td>
+            <td> <button type="submit" class="btn btn-dark">마감하기</button></td>
         </tr>
         {% endfor %}
     </tbody>
