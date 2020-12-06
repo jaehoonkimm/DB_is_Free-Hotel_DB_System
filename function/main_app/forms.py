@@ -10,10 +10,10 @@ from .models import EmployeesParkingSystem
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ['room_type_grade', 'reservation_online_name', 'reservation_adult_count',
+        fields = ('room_type_grade', 'reservation_online_name', 'reservation_adult_count',
                 'reservation_child_count', 'reservation_group',
                 'reservation_start_date', 'reservation_end_date',
-                'reservation_breakfast_included']
+                'reservation_breakfast_included')
         labels = {  'room_type_grade':'예약 객실 등급',
                     'reservation_online_name':'예약자 성함',
                     'reservation_adult_count':'숙박자 수',
@@ -23,9 +23,20 @@ class ReservationForm(forms.ModelForm):
                     'reservation_end_date':'체크아웃 예정일',
                     'reservation_breakfast_included':'조식 포함 여부'
         }
+        ROOM_CHOICE = (
+                 ('Standard Single','스탠다드 싱글'),
+                ('RoomTypeInfo object (Standard Double)', '스위트 더블'),
+                ('RoomTypeInfo object (Suite Twin)', '스위트 더블'),
+                ('RoomTypeInfo object (Suite Double)', '스위트 더블'),
+                ('RoomTypeInfo object (Executive Room)', '스위트 더블'),
+        )
         widgets = {
+            # 'room_type_grade': forms.Select(choices=ROOM_CHOICE),
             'reservation_start_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
             'reservation_end_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
+        }
+        fields_classes = {
+            'room_type_grade':ROOM_CHOICE
         }
 
 class EmTaskAssignForm(forms.ModelForm):
