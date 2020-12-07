@@ -62,10 +62,13 @@
             </ul>
         </div>
     </nav>
+
     <!-- 지금 보고 있는 base.html 파일의 block contents 태그가 있는 지점에, 각각의 html 파일들의 block contents 태그 안에 있는 내용이 합쳐집니다 -->
     {% if not not_empty_rooms %}
     <h3 class="my-3 border-bottom pb-2">예약하기</h3>
-    <form method="post" class="post-form my-3" style="width: 20%; margin: 0 auto;">
+    <h5>객실 가격 : [STD.SG:25 / STD.DB:30 / SW.DB:40 / SW.TW:50 / EXECUTIVE:120]</h5>
+    <div></div>
+    <form method="post" class="post-form my-3" style="width: 25%; margin: 0 auto;">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-dark">예약하기</button>
