@@ -16,6 +16,7 @@ class AmenityItemList(models.Model):
     class Meta:
         managed = False
         db_table = 'AMENITY_ITEM_LIST'
+        verbose_name_plural = 'Amenity 물품 리스트'
 
 
 class AmenitySpendHistory(models.Model):
@@ -27,6 +28,7 @@ class AmenitySpendHistory(models.Model):
     class Meta:
         managed = False
         db_table = 'AMENITY_SPEND_HISTORY'
+        verbose_name_plural = 'Amenity 물품 사용기록'
 
 
 class Calendar(models.Model):
@@ -50,6 +52,7 @@ class CheckIn(models.Model):
     class Meta:
         managed = False
         db_table = 'CHECK_IN'
+        verbose_name_plural = '체크인'
 
 
 class CheckOut(models.Model):
@@ -61,6 +64,7 @@ class CheckOut(models.Model):
     class Meta:
         managed = False
         db_table = 'CHECK_OUT'
+        verbose_name_plural = '체크아웃'
 
 
 class Customer(models.Model):
@@ -78,6 +82,7 @@ class Customer(models.Model):
     class Meta:
         managed = False
         db_table = 'CUSTOMER'
+        verbose_name_plural = '고객 명단'
 
 
 class CustomerParkingSystem(models.Model):
@@ -90,6 +95,7 @@ class CustomerParkingSystem(models.Model):
     class Meta:
         managed = False
         db_table = 'CUSTOMER_PARKING_SYSTEM'
+        verbose_name_plural = '고객 주차 기록'
 
 
 class CustomerPreperence(models.Model):
@@ -103,6 +109,7 @@ class CustomerPreperence(models.Model):
     class Meta:
         managed = False
         db_table = 'CUSTOMER_PREPERENCE'
+        verbose_name_plural = '고객 선호도'
 
 
 class DepartmentTeam(models.Model):
@@ -114,6 +121,7 @@ class DepartmentTeam(models.Model):
     class Meta:
         managed = False
         db_table = 'DEPARTMENT_TEAM'
+        verbose_name_plural = '부서별 팀 목록'
 
 
 class Employees(models.Model):
@@ -131,6 +139,7 @@ class Employees(models.Model):
     class Meta:
         managed = False
         db_table = 'EMPLOYEES'
+        verbose_name_plural = '직원 목록'
 
 
 class EmployeesParkingSystem(models.Model):
@@ -143,6 +152,7 @@ class EmployeesParkingSystem(models.Model):
     class Meta:
         managed = False
         db_table = 'EMPLOYEES_PARKING_SYSTEM'
+        verbose_name_plural = '직원 주차 기록'
 
 
 class EmployeeDepartment(models.Model):
@@ -154,6 +164,7 @@ class EmployeeDepartment(models.Model):
     class Meta:
         managed = False
         db_table = 'EMPLOYEE_DEPARTMENT'
+        verbose_name_plural = '부서 목록'
 
 
 class HouseKeepingTaskList(models.Model):
@@ -168,6 +179,7 @@ class HouseKeepingTaskList(models.Model):
     class Meta:
         managed = False
         db_table = 'HOUSE_KEEPING_TASK_LIST'
+        verbose_name_plural = '하우스키핑 업무 기록'
 
 
 class LostItemList(models.Model):
@@ -181,6 +193,7 @@ class LostItemList(models.Model):
     class Meta:
         managed = False
         db_table = 'LOST_ITEM_LIST'
+        verbose_name_plural = '분실물 기록'
 
 
 class Mileage(models.Model):
@@ -192,6 +205,7 @@ class Mileage(models.Model):
     class Meta:
         managed = False
         db_table = 'MILEAGE'
+        verbose_name_plural = '고객 마일리지 기록'
 
 
 class OfficeCheckOn(models.Model):
@@ -202,6 +216,7 @@ class OfficeCheckOn(models.Model):
     class Meta:
         managed = False
         db_table = 'OFFICE_CHECK_ON'
+        verbose_name_plural = '직원 출근 기록'
 
 
 class OfficeCheckOut(models.Model):
@@ -212,6 +227,7 @@ class OfficeCheckOut(models.Model):
     class Meta:
         managed = False
         db_table = 'OFFICE_CHECK_OUT'
+        verbose_name_plural = '직원 퇴근 기록'
 
 
 class RealtimeClaim(models.Model):
@@ -227,6 +243,7 @@ class RealtimeClaim(models.Model):
     class Meta:
         managed = False
         db_table = 'REALTIME_CLAIM'
+        verbose_name_plural = '실시간 고객 요청 업무'
 
 
 class Reservation(models.Model):
@@ -261,6 +278,7 @@ class Reservation(models.Model):
     class Meta:
         managed = False
         db_table = 'RESERVATION'
+        verbose_name_plural = '예약 기록'
 
 
 class ReservationCalendar(models.Model):
@@ -272,6 +290,7 @@ class ReservationCalendar(models.Model):
     class Meta:
         managed = False
         db_table = 'RESERVATION_CALENDAR'
+        verbose_name_plural = '예약 잔여석'
 
 
 class ReservationCanceled(models.Model):
@@ -283,6 +302,7 @@ class ReservationCanceled(models.Model):
     class Meta:
         managed = False
         db_table = 'RESERVATION_CANCELED'
+        verbose_name_plural = '예약 취소 기록'
 
 
 class RoomList(models.Model):
@@ -300,6 +320,7 @@ class RoomList(models.Model):
     class Meta:
         managed = False
         db_table = 'ROOM_LIST'
+        verbose_name_plural = '객실 목록'
 
 
 class RoomOrderHistory(models.Model):
@@ -311,6 +332,7 @@ class RoomOrderHistory(models.Model):
     class Meta:
         managed = False
         db_table = 'ROOM_ORDER_HISTORY'
+        verbose_name_plural = '고객 주문 기록'
 
 
 class RoomProductList(models.Model):
@@ -321,6 +343,7 @@ class RoomProductList(models.Model):
     class Meta:
         managed = False
         db_table = 'ROOM_PRODUCT_LIST'
+        verbose_name_plural = '고객용 물품 목록'
 
 
 class RoomTypeInfo(models.Model):
@@ -332,6 +355,7 @@ class RoomTypeInfo(models.Model):
     class Meta:
         managed = False
         db_table = 'ROOM_TYPE_INFO'
+        verbose_name_plural = '객실 유형별 정보'
 
 
 class AccountEmailaddress(models.Model):
