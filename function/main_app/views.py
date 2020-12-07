@@ -201,11 +201,12 @@ def em_mytask(request):
     last_name = user[0]
     first_name = user[1:]
     target_employee = Employees.objects.filter(employee_last_name=last_name, employee_first_name=first_name)
+    employee_id_value = 0
     for i in target_employee:
-        emp_id = i.employee_id
+        employee_id_value = i.employee_id
     
-    your_task = HouseKeepingTaskList.objects.filter(employee=emp_id)
-    rc_list = RealtimeClaim.objects.filter(employee=emp_id)
+    your_task = HouseKeepingTaskList.objects.filter(employee=employee_id_value)
+    rc_list = RealtimeClaim.objects.filter(employee=employee_id_value)
 
     return render(request, 'mypage.html',  {'your_task':your_task, 'rc_list':rc_list, 'last_name':last_name})
 
