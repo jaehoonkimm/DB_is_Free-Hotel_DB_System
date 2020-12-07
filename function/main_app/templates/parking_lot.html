@@ -134,6 +134,9 @@
                     style="background-color: rgb(219, 204, 184);">주차 페이지</a>
                 <a href="/admin/" class="list-group-item list-group-item-action"
                     style="background-color: rgb(219, 204, 184);">admin 페이지</a>
+                    <br />
+                    <br />
+                    <strong>{{ request.user }} 님 접속중</strong> 
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -189,7 +192,7 @@
                         {% if form1 %}
                             <ul>
                                 {% for EmployeesParkingSystem in form1 %}
-                                    <li><h6>{{ EmployeesParkingSystem.car_plate_number }}</h6></li>
+                                    <h6>{{ EmployeesParkingSystem.car_plate_number }}</h6>
                                     직원 이름 : {{ EmployeesParkingSystem.employee.employee_first_name }}<br>
                                     주차 위치 : {{ EmployeesParkingSystem.parking_location }}<br>
                                     입차 시각 : {{ EmployeesParkingSystem.parking_in_timestamp }}<br>
@@ -205,7 +208,7 @@
                     {% if form2 %}
                         <ul>
                             {% for CustomerParkingSystem in form2 %}
-                                <li><h6>{{ CustomerParkingSystem.car_plate_number }}</h6></li>
+                                <h6>{{ CustomerParkingSystem.car_plate_number }}</h6>
                                 고객 관리 번호 : {{ CustomerParkingSystem.check_in }}<br>
                                 주차 위치 : {{ CustomerParkingSystem.parking_location }}<br>
                                 입차 시각 : {{ CustomerParkingSystem.parking_in_timestamp }}<br>
