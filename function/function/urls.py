@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from main_app import views
 from django.conf.urls import url
+from django.conf import settings
 
 from django.views.static import serve 
 import re 
@@ -42,6 +43,5 @@ urlpatterns = [
     path('employee_status/', views.employee_status, name='employee_status'),
     path('start/', views.start_time, name='start_time'), 
     path('end/', views.end_time, name='end_time'), 
-    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
 
