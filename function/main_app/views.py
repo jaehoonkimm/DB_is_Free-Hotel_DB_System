@@ -196,23 +196,40 @@ def parking_lot(request):
 
 #직원 마이페이지 - 업무 불러오기
 def em_mytask(request):
-    log_id = request.user.id
-    your_task = HouseKeepingTaskList.objects.all()
-    rc_list = RealtimeClaim.objects.all()
-    all_em =  Employees.objects.all().values()
-    context1 = {'your_task':your_task}
-    context2 = {'rc_list':rc_list}
-    return render(request, 'mypage.html', context1, context2)
+    user = request.user
+    user = str(user)
+    last_name = user[0]
+    first_name = user[1:]
+    target_employee = Employees.objects.filter(employee_last_name=last_name, employee_first_name=first_name)
+    for i in target_employee:
+        emp_id = i.employee_id
+    
+    your_task = HouseKeepingTaskList.objects.filter(employee=emp_id)
+    rc_list = RealtimeClaim.objects.filter(employee=emp_id)
+
+    return render(request, 'mypage.html',  {'your_task':your_task, 'rc_list':rc_list, 'last_name':last_name})
 
 #시작시간 기록 
 def start_time(request):
-    hk_list = HouseKeepingTaskList.objects.all()
+    user = request.user
+    user = str(user)
+    last_name = user[0]
+    first_name = user[1:]
+    target_employee = Employees.objects.filter(employee_last_name=last_name, employee_first_name=first_name)
+    for i in target_employee:
+        emp_id = i.employee_id
+    your_task = HouseKeepingTaskList.objects.filter(employee=emp_id)
+    # rc_list = RealtimeClaim.objects.filter(employee=emp_id)
+
+    time = now
+    data = {'Time':time}
+
     if request.method == "POST":
-        form = StartTimeForm(request.POST)
+        form = StartTimeForm(request.POST, data)
         if form.is_valid():
             RealtimeClaim = form.save(commit=False)
             RealtimeClaim.save()
-            return redirect('realtime_claims')
+            return redirect('my_page')
     else:
         form = StartTimeForm()
     return render(request, 'start_time.html', {'form': form})

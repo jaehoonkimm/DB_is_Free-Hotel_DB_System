@@ -102,11 +102,17 @@ class ParkinglotForm(forms.ModelForm):
 class StartTimeForm(forms.ModelForm):
     class Meta:
         model = HouseKeepingTaskList
-        fields = ['house_keeping_task_start_time', 
-                ]
+        fields = ['room', 'house_keeping_task_start_time' ]
+        labels = {
+            'room':'하우스키핑 업무 호수',
+            'house_keeping_task_start_time':'업무 시작 시간'
+        }
+
 
 class EndTimeForm(forms.ModelForm):
     class Meta:
         model = HouseKeepingTaskList
         fields = ['house_keeping_task_end_time'
                     ]
+
+                    
