@@ -63,12 +63,20 @@ class EmployeeattendancecheckonForm(forms.ModelForm):
         model = OfficeCheckOn
         fields = ['office_check_on_timestamp', 'employee'
                 ]
+        labels = {
+            'office_check_on_timestamp': '출근시간',
+            'employee': '직원명'
+        }
 
 class EmployeeattendancecheckoutForm(forms.ModelForm):
     class Meta:
         model = OfficeCheckOut
         fields = ['office_check_out_timestamp', 'employee'
                 ]
+        labels = {
+            'office_check_out_timestamp': '퇴근시간',
+            'employee': '직원명'
+        }
 
 
 class RealTimeClaimsForm(forms.ModelForm):
