@@ -23,7 +23,8 @@
             border: 3px solid cadetblue;
             font-size: 20px;
             font-weight: bolder;
-            margin-right: 2px;
+            margin-right: 1%;
+            margin-bottom: 1%;
         }
 
         body {
@@ -168,12 +169,11 @@
                 <h3 class="my-3 border-bottom pb-2">직원 현황</h3>
 
                 <div class="my-3" style="border: 5px solid white; 
-                                margin: auto; 
                                 display: flex; flex-direction: row;
-                                width: 95%; height: auto;">
+                                flex-flow: wrap;">
                     <br />
                     {% for employee in employee_list %}
-                    <div class="col col-sm-2 room_box">
+                    <div class="col col-lm-2 room_box">
                         직원 ID - {{ employee.employee_id }} <br />
                         {{ employee.employee_last_name }}
                         {{ employee.employee_first_name }} <br />
